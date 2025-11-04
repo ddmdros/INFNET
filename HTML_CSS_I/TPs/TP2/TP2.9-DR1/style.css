@@ -1,0 +1,23 @@
+h2{
+    background-color: gray;
+    text-align: center;
+    color: rgb(55, 54, 54);
+    font-weight: 300;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 5em; /* Usei a página à 100% como referência */
+}
+
+img{
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+}
+
+p{
+    margin-left: 1em;
+    margin-right: 1em;
+    font-size: 3em;
+}

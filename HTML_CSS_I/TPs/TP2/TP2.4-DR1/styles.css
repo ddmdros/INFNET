@@ -1,0 +1,29 @@
+h1 {
+  text-decoration: underline;
+}
+
+@font-face{
+  font-family: "HennyPenny-Regular" ;
+  src: url(fonts/HennyPenny-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "RubikMoonrocks-Regular";
+  src: url(fonts/RubikMoonrocks-Regular.ttf);
+}
+
+@font-face {
+  font-family: "VT323-Regular";
+  src: url(fonts/VT323-Regular.ttf);
+}
+
+.primeiro-paragrafo{
+  font-family: "HennyPenny-Regular";
+}
+
+.segundo-paragrafo{
+ font-family: "VT323-Regular";
+}
+.terceiro-paragrafo{
+ font-family: "RubikMoonrocks-Regular";
+}

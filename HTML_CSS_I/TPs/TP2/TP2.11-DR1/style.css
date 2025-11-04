@@ -1,0 +1,46 @@
+header{
+    height: 85px;
+    background-color:rgb(43, 41, 41);
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: -8px;
+    white-space: nowrap; /* como ainda não vimos flexbox e outros tipos de display, usei um nowrap para evitar que os menus de navegação se amontoem como lista ao dar muito zoom */
+}
+
+
+header img{
+    float: right;
+    height: 50px;
+    margin-right: 45px;
+    margin-top: 15px;
+    border-radius: 50px;
+}
+
+
+.logo-text{
+    color:rgb(43, 41, 41);
+    float: right;
+    margin-right: -57px;
+    
+}
+
+header span{
+    display: inline-block;
+    color: rgb(194, 25, 25);
+    font-size: 1.5em;
+    padding: 10px;
+    padding-left: 25px;
+    padding-top: 25px;
+}
+
+body{
+    background-color: rgba(164, 149, 108, 0.972);
+}
+
+article{
+    margin-top: 60px;
+    margin-left: 40px;
+    margin-right: 50px;
+    text-align: justify;
+    font-size: 1.5em;
+}

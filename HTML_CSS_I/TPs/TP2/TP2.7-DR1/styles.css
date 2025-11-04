@@ -1,0 +1,42 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+header{
+  display: flex;
+  border: 1px solid black;
+  height: 100px;
+  background-color: beige;
+  
+  /* width: 100%; */  
+}
+
+header img, nav{
+  /* margin-top: 30px;
+  display: inline;
+  border: 1px solid black; */
+
+  background-color: white;
+  display: flex;
+  text-align: center;
+  max-height: 65%;
+  
+  border: 1px solid blue;
+  
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+nav{
+  padding-top:10px;
+  padding-bottom: 10px;
+}
+
+
+nav span{
+  display: flex;
+
+  border: 1px solid red;
+
+}
