@@ -1,9 +1,5 @@
 *{
-  
-  margin: 0;
-  padding: 0;
-  /* box-sizing: border-box; */
-
+  color:rgb(80, 76, 76);
 }
 
 body{
@@ -12,13 +8,10 @@ body{
   margin-right: 50px;
 }
 
-h1 {
-  text-decoration: underline;
-}
 
-h3{
-  text-transform: uppercase;
-  font-size: small;
+h1, h2{
+  /* text-transform: uppercase; */
+  /* font-size: medium; */
   /* text-decoration: underline; */
   color: black;
 }
@@ -33,4 +26,14 @@ h3{
   text-transform: uppercase;
   font-size: 25px;
   background-color: yellow;
+}
+
+a[href$=".com.br"]{
+  font-style: italic;
+  color: orange;
+  background-color: gray;
+}
+
+ul li[type="A"]{
+  color: blue;
 }
