@@ -1,61 +1,26 @@
-*{
-  margin: 0;
-  padding: 0;
+p{
+  color: gray;
 }
 
-body {
-  color: #ecf0f1;
-  background-color: #121212;
-  margin: 40px auto;
-  padding: 0 20px;
-  font-family: Roboto, sans-serif;  
-}
-
-#titulo{
-  font-size: 1.5em;
-  font-weight: 700;
-  margin-bottom: 3px;
-  color:#ffb74d;
-}
-
-.autoria{
-  padding-bottom: 16px;
-  text-transform: uppercase;
-  font-size: 0.75em;
-  color: #bdbdbd;
-}
-
-.autor{
-  color: orange;
-  text-transform: uppercase;
-  font-size: 0.75em;
-}
-
-.normal{
-  line-height: 1.6;
-}
-
-.quote {
-  margin-top: 10px;
+.cursivo-italico{
   font-style: italic;
-  text-align: left;
-  padding: 15px;
-  background: rgba(255,165,0,0.07);
-  border-left: 6px solid orange;
-  border-radius: 8px;
-  color: #f0e6da;
+  font-family: cursive;
 }
 
-.quote .autor {
-  display: block;
-  color: orange;
-  text-transform: uppercase;
-  margin-top: 15px;
-  font-size: 12px;
+[data-type="bold"]{
+  font-weight: bold;
 }
 
-.quote:hover {
-  background: rgba(255,165,0,0.12);
+[data-type="sublinhado"]{
+  text-decoration: underline;
 }
 
+#destaque{
+  background-color: #FFF59D;
+  color:#333333;
+}
 
+.codigo{
+    background-color: #C8E6C9;
+  color:#424242;
+}

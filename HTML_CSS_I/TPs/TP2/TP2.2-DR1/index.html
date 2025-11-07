@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Arquivo padrão</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Arquivo padrão</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <body>
+    <!-- Estruture um documento HTML com 4 parágrafos contendo textos diferentes. Estilize cada parágrafo de forma única, sem repetição, alterando a visualização dos parágrafos no navegador. Use seletores para distinguir os parágrafos e estilize os seletores numa folha de estilos externa ao documento HTML.
 
-<body>
-  <article>
-    <p id="titulo">T2.2-DR2 Estilizando parágrafos</p>
-    <p class="autoria">Publicado em: DD/MM/AA por <span class="autor">Autor</span>.</p>
-    <p class="normal">Estruture um documento HTML com 4 parágrafos contendo textos diferentes. Estilize cada parágrafo de forma única, sem repetição, alterando a visualização dos parágrafos no navegador. Use seletores para distinguir os parágrafos e estilize os seletores numa folha de estilos externa ao documento HTML.
-</p>
-    <p class="quote">Bora tirar 10 nesse TP! <span class="autor">Diogo Medeiros</span></p>
-  </article>
+ -->
+    
+    <p>
+      1. Comecei estilizando todos os parágrafos com o seletor
+      <span class="codigo">p</span>, definindo-o com a cor cinza.
+    </p>
+    <p class="cursivo-italico">
+      2. Em seguida, defino um parágrafo com a classe
+      <span class="codigo">class="cursivo-italico"</span>. No HTML, chamo
+      <span class="codigo">class="cursivo-italico"</span> e no CSS chamo
+      <span class="codigo">.cursivo-italico{}</span>
+    </p>
+    <p class="cursivo-italico" data-type="sublinhado">
+      3. Aqui, uso a classe
+      <span class="codigo">class=cursivo-italico</span> e o atributo
+      <span class="codigo">data-type="sublinhado"</span>. No HTML, chamo
+      <span class="codigo">class="cursivo-italico"</span> e
+      <span class="codigo">data-type="sublinhado"</span>, e no CSS só adiciono o
+      <span class="codigo">[data-type="sublinhado]{}</span>, pois já temos a
+      classe cursiva definida.
+    </p>
+    <p id="destaque">
+      4. Para finalizar, crio uma id única chamada "destaque". No HTML, chamo
+      <span class="codigo">id="destaque"</span> e no CSS chamo
+      <span class="codigo">#destaque{}</span> que cria um marca-texto amarelo
+      pastel e muda a fonte para um cinza mais escuro que o padrão definido no
+      seletor <span class="codigo">p</span>.
+    </p>
 
+    <!-- <p>Extra: Criei uma estilização adicional para destacar os códigos com uma <span class="codigo">class="codigo"</span>. Comentei este parágrafo para me manter fiel ao enunciado, que pedia quatro parágrafos.</p> -->
 
-  
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
