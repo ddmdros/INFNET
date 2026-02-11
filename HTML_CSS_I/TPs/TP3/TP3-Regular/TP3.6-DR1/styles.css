@@ -1,0 +1,136 @@
+/* Fiz com zoom em 200%*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+.card{
+    display: inline-block;
+    height: 390px;
+    width: 250px;
+    border: 1px solid black;
+    background-color: black;
+}
+
+.hamburguer{
+    color: rgb(247, 28, 28);
+    position: absolute;
+    top: 20px;
+    left: 225px;
+    background: rgba(0, 0, 0, 0.247);
+    padding: 5px;
+}
+
+.texto-container{
+    transform: translateY(-40px);
+    margin-left: 10px;
+    display: block;
+    color: rgb(226, 227, 235);
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    margin-right: 15px;
+}
+
+
+.texto-container h2{
+    font-weight: 450;
+    margin-bottom: 0px;
+}
+
+.texto-container .ficha-tecnica{
+    font-weight: 150;
+    font-size: 10px;
+    display:block;
+    margin-bottom: 0;
+}
+
+a{
+    text-decoration: inherit;
+    color: inherit;
+}
+
+
+.texto-container .header-sinopse{
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+
+
+.texto-container .sinopse{
+    font-size: 10px;
+}
+
+
+.texto-container .elenco{
+    font-size: 8px;
+    font-style: italic;
+
+}
+
+.bg{
+    height: 200px;
+    width: inherit;
+    background-image: url(https://www.rollingstone.com/wp-content/uploads/2024/11/dandadan2.jpg?w=1581&h=1054&crop=1);
+
+    background-size: cover;
+    background-position: center;
+    display: block;
+
+    position: relative;
+
+    z-index: 0;
+    
+}
+
+
+.bg::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, black 100%);
+}
+
+footer{
+    margin-top: 10px;
+
+    position: relative;
+    padding: 5px;
+
+}
+
+footer::after{
+    content:"";
+    display: block;
+    clear: both;
+}
+
+.trailer{
+    float: left;
+    margin-left: -5px;
+
+    color: rgb(247, 28, 28);
+    text-transform: uppercase;
+    font-size: 8px;
+    border: 1px solid rgb(247, 28, 28);
+    padding: 4px 6px;
+    border-radius: 5px;
+}
+
+.trailer:hover{
+    background-color: rgb(247, 28, 28);
+    color: white;
+}
+.trailer .play{
+    font-size: 9px;
+    padding-right: 5px;
+}
+
+.icones{
+    float: right;
+    color: rgb(247, 28, 28);
+}
+
+.icones i{
+    margin-left: 15px;
+}

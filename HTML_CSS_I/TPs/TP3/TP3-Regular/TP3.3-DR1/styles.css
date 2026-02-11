@@ -1,0 +1,28 @@
+/* Usei um zoom de 200% num monitor de 15.6' */
+
+
+table{
+    border-collapse: collapse;
+    /* border-collapse para retirar a borda branca vertical das colunas */
+    font-size: 1.5em;
+    /* aumentei o tamanho para ficar mais parecido com a imagem de exemplo */
+    width: 100%;
+}
+thead th{
+    background-color: #323232;
+    color: white;
+    text-decoration: underline; 
+    text-align: left;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    
+}
+
+tr:nth-child(even){
+    background-color: rgb(220, 220, 220);
+}
+
+td{
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+}

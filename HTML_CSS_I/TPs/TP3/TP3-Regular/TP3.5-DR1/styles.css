@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.card{
+    font-family: "Roboto", sans-serif;
+    width: 180px;
+    height: 250px;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(99, 97, 100, 0.09);
+}
+
+header{
+    height: 62px;
+    background-color: purple;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.fa-solid{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.foto-pessoa{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 45px;
+    left: 70px;
+    background-image: url(https://media.licdn.com/dms/image/v2/D4D03AQHjyQXFk6-Ypg/profile-displayphoto-crop_800_800/B4DZpHpZbRJcAI-/0/1762138626456?e=1766016000&v=beta&t=7WLuwWn01QEtuQqdRASr4wwaVtzJdHjyGYyE5L8Yyfk);
+    background-size: cover;
+    padding: 1px;
+    border: 2.5px solid white;
+}
+
+.duas-bordas:after{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    border: 5px solid purple;
+}
+.conteudo-texto{
+    text-align: center;
+    margin: 15px;
+}
+
+.conteudo-texto h2{
+    margin-top: 35px;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.conteudo-texto h3{
+    margin-top: 0px;
+    font-size: 12px;
+    color: purple;
+}
+
+.conteudo-texto p{
+    font-size: 9px;
+}
+
+a{
+    text-decoration: none;
+    color: inherit
+}
+.conteudo-texto .botao-perfil{
+    font-size: 8px;
+    border: 1px solid purple;
+    border-radius: 3px;
+    padding: 5px;
+    color: purple;
+    text-transform: uppercase;
+}
+
+.conteudo-texto .botao-perfil:hover{
+    background-color: purple;
+    color: white;
+}
+
+
+footer{
+    margin-top: 15px;
+    height: 20px;
+    background-color: purple;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+footer i{
+    padding: 0px 5px;
+    font-size: 10px;
+    color:white;
+
+}
+
+footer i:hover{
+    transform: scale(1.8);
+}
+
+.icon-link.whatsapp:hover i{ 
+    color: purple; 
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px; 
+
+}   
+.icon-link.facebook:hover i{ 
+  color: purple; 
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px; 
+
+}  
+.icon-link.instagram:hover i{ 
+  color: purple; 
+    background-color: white;
+    border-radius: 50%; 
+    padding: 5px; 
+
+}  
+.icon-link.linkedin:hover i{
+  color: purple; 
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px; 
+
+} 
+.icon-link.behance:hover i{ 
+  color: purple; 
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px; 
+} 

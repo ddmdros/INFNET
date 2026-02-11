@@ -1,0 +1,22 @@
+DOM
+Modelo de documento por objetos
+nós ->> NodeJS
+
+Métodos de acesso ao DOM
+
+- Por ID: getElementById(id)
+    mt usado pq em teoria cada id é exclusivo, então é certeiro
+- Por classe: getElementsByClassName(classes)
+- Por tag: getElementsByTagName(nome-da-tag)
+- Por atributo name: getElemtsByName(nome-do-elemento)
+    pouco usado, mais em formulários
+- Por seletor: querySelector(selector-css)
+    permite acessar pelos 6 seletores do css: classe, id, atributo, tag, universal e seletor de estado (:hover, por exemplo)
+    pega a primeira execução e vai embora
+- Por lista de seletores (querySelectorAll(seletores-css))
+
+
+
+
+
+-> Use aquele que faz sentido pra vc, que te dá ganho de tempo e de desempenho

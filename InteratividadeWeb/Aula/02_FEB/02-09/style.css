@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color: #121212;
+    background-color: azure;
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+.dark{
+    color: azure;
+    background-color: #121212;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+img{
+    width: 600px;
+}
+
+.bt_tema{
+    padding: 10px 20px;
+    background-color: lightblue;
+    color: #121212;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+.texto{
+    text-decoration: underline;
+}

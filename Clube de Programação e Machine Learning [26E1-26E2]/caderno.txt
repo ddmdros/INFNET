@@ -1,0 +1,43 @@
+AULA 01 - 05/02
+Machine Learning
+Visão Computacional
+
+Seminário em junho -> Avaliativo (10-15m)
+webots: https://cyberbotics.com/
+
+Agente cognitivo
+-- Recomendação "Jogo da Imitação", filme do Alan Turing
+-- Projeto soar https://soar.eecs.umich.edu/
+
+Linguagem de agentes cognitivos usa
+linguagem de formalização de regras
+SOAR = State And Operator Result
+https://soar.eecs.umich.edu/home/About/
+
+
+Simuladores: Gazebo, Webots, PyBullet, MuJoCo, AI2 Thor
+
+Affordance: capacidade de um AC executar com sucesso uma ação específica dado o estado atual do ambiente
+
+chunk: unidade básica de conhecimento.
+
+Quando um impasse é resolvido, Soar tem a oportunidade de aprender, resumindo e generalizando o processamento.
+    o que é o soar? -> arquitetura
+    Basicamente, enquanto a arquitetura "comum" organiza arquivos e servidores, a arquitetura SOAR organiza raciocínio e aprendizado.
+
+
+
+memória procedural: conhecimento prático de longo prazo, como andar de bicicleta
+
+memória semântica: conhecimento universal
+-> um triângulo tem três lados
+
+memória episódica: eventos particulares vividos no passado
+
+memória de trabalho WME: memória atual (sensores, por exemplo)
+
+impasse: quando o conhecimento para a resolução de problemas não está diretamente disponível na memória procedural
+
+subestado: estado para resolver impasses
+
+niveis de processamento: 1: reativo; 2: deliberado

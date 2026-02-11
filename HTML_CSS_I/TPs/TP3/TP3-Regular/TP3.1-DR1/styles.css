@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    background-color: #e0e0e0;
+}
+
+.galeria{
+    width: 100vw;
+    height: 360px;
+
+    text-align: center;
+    margin-top: 15px;
+}
+
+.legenda{
+    text-align: center;
+    margin-top: calc(50vh - 120px); 
+    /* Fiz uma centralização vertical aproximada pegando 50% do viewport menos um valor arbitrário que representa a altura da classe .galeria e a altura da própria legenda */
+}
+
+.foto-1{
+    height: 150px;
+    aspect-ratio: 16/9;
+    border: 1px solid black;
+    display: inline-block;
+    background-image: url(https://cdn.pixabay.com/photo/2023/12/07/11/11/girl-8435340_1280.png);
+    background-size: cover;
+    background-position: 0px -110px;
+}
+
+.foto-2{
+    height: 150px;
+    aspect-ratio: 16/9;
+    border: 1px solid black;
+    display: inline-block;
+    background-image: url(https://cdn.pixabay.com/photo/2023/12/07/11/11/girl-8435339_1280.png);
+    background-size: cover;
+    background-position: 0px -20px;
+}
+
+.foto-3{
+    height: 150px;
+    aspect-ratio: 16/9;
+    border: 1px solid black;
+    display: inline-block;
+    background-image: url(https://cdn.pixabay.com/photo/2023/10/07/23/39/girl-8301168_640.png);
+    background-size: cover;
+    background-position: 0px -90px;
+
+}
+

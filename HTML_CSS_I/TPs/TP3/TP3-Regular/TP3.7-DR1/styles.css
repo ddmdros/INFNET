@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+nav{
+    background-color: white;
+
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+
+}
+
+nav a{
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: blueviolet;
+    vertical-align: middle;
+}
+
+
+nav a:hover{
+    background-color: blueviolet;
+    color: white;
+}
+
+nav i{
+    margin: 0;
+    padding: 0;
+}
+
+nav a:hover i,
+nav a:hover .texto-icone{
+    color: white;
+}
+
+.texto-icone:hover{
+    font-family: "Roboto", sans-serif;
+}

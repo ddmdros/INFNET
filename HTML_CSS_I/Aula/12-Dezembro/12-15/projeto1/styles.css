@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background-color: saddlebrown;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+header img{
+    border-radius: 50%;
+    width: 100px;
+    margin-bottom: 15px;
+}
+
+header nav{
+    width: 100%;
+}
+
+header nav ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header nav ul li{
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid black;
+}
+
+
+
+
+/* Dispositivos pequenos */
+@media(min-width: 576px){
+
+    body{
+        background-color: green;
+    }
+
+}
+
+/* Tablets */
+
+@media(min-width: 768px){
+
+    body{
+        background-color: blue;
+    }
+
+}
+
+/* Monitores */
+@media(min-width: 992px){
+
+    body{
+        background-color: antiquewhite;
+    }
+
+    
+header{
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header img{
+    /* border-radius: 50%; */
+    width: 125px;
+    /* margin-bottom: 15px; */
+}
+
+header nav{
+    width: 65%;
+}
+
+header nav ul{
+    /* display: flex; */
+    flex-direction: row;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+header nav ul li{
+    /* width: 100%; */
+    /* height: 40px;
+    font-size: 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ */
+    border: 1px solid black;
+
+}
+
+}
+
+/* Big monitores*/
+@media(min-width: 1200px){
+
+    body{
+        background-color: yellowgreen;
+    }
+
+}
+
+
+

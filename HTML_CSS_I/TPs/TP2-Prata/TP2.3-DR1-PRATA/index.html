@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CSS - Dominando a estilização de elementos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <article>
+
+
+        <section class="prompt">
+            <span id="tituloTP">TP2.3-DR1-PRATA</span>
+            
+            <p class="prompt-text">Crie um HTML contendo o título "CSS - Dominando a estilização de
+            elementos". Nele fale sobre a hierarquia, herança, proximidade e
+            importância de funcionamento de propriedades css. Utilize as tags e
+            propriedades css de alteração de textos para entregar seu documento HTML.
+            Detalhe com exemplos de trechos representando os temas citados.</p>
+        </section>
+
+        <h1>CSS - Dominando a estilização de elementos</h1>
+        
+        <h2>Hierarquia</h2>
+        <p>A hierarquia, ou Specificity, em inglês, diz respeito à ordem de importância dos seletores CSS quando mais de um seletor CSS é aplicado a um mesmo elemento.</p>
+        <p>A hierarquia é calculada a partir de um algorítimo com três categorias: ID, Classe e Tipo.</p>
+        <ul>
+            <li>ID: inclui os seletores de ID, como <span class="exemplo">#exemplo</span>. Para cada ID, soma 1-0-0.</li>
+            <li>Classe: inclui seletores de classe, como <span class="exemplo">.minhaClasse</span>, seletores de atributo, como <span class="exemplo">[type="exemplo1"]</span> e pseudoclasses, como <span class="exemplo">:hover</span>. Para cada classe, atributo ou pseudo-classe, adiciona (0-1-0) ao valor da hierarquia. </li>
+            <li>Tipo: inclui seletores de tipo, como <span class="exemplo">p</span>, <span class="exemplo">h1</span> e <span class="exemplo">td</span>, e pseudo elementos, como <span class="exemplo">::before</span> e <span class="exemplo">::placeholder</span>. Para cada tipo ou pseudoelemento, adiciona (0-0-1). </li>
+            <li>Universal: o seletor universal <span class="exemplo">*</span> não adiciona valor (0-0-0).</li>
+        </ul>
+
+        <p>No final, os elementos recebem uma pontuação, que determinará a hierarquia, como:</p>
+        <ul>
+            <li><span class="exemplo">(0-1-1)</span></li>
+            <li><span class="exemplo">(1-2-0)</span></li>
+            <li><span class="exemplo">(0-2-1)</span></li>
+        </ul>
+        <p>Em que:</p>
+        <ul>
+            <li><span class="exemplo">(1-2-0)</span> > <span class="exemplo">(0-2-1)</span> > <span class="exemplo">(0-1-1)</span></li>
+        </ul>
+        <p>Pois</p>
+            <ul>
+            <li><span class="exemplo">ID</span> > <span class="exemplo">CLASSE</span> > <span class="exemplo">TIPO</span></li>
+        </ul>
+
+        <h2>Herança</h2>
+        <p>A herança em CSS ocorre quando um elemento herda uma estilização de outro elemento. Por exemplo:</p>
+
+        <p class="blue">Este código ficou em azul porque está dentro da classe "blue".</p>
+
+        <p class="blue">Este parágrafo azul tem um texto com <em>ênfase</em>. A tag <span class="exemplo">em</span> não diz nada sobre o texto ser azul, mas ela herdou essa característica o seu elemento pai <span class="exemplo">p class="exemplo"</span>.</p>
+
+        <p>Notou que a classe "exemplo" sobrescreveu a classe "blue"? Isso se dá devido à proximidade, nosso próximo assunto.</p>
+        <h2>Proximidade</h2>
+        <p>A proximidade se refere à posição dos elementos no HTML e à forma como seletores mais próximos, como filhos diretos, têm prioridade sobre regras mais genéricas.</p>
+        <p>No exemplo acima, temos um <span class="exemplo">p class="blue"</span> e um <span class="exemplo">span class="exemplo"</span>. Como o span está dentro do p, ele tem prioridade</p>
+        <h2>Importância</h2>
+        <p>Compreender como o efeito cascata do CSS funciona é fundamental para poder trabalhar bem com ele. Sem esse conhecimento, uma pessoa desenvolvedora pode se ver perdida, tentando atribuir efeitos e sem entender o porquê da sua folha de estilo não funcionar. Além disso, essas características hierárquicas existem para garantir maior consistência e legibilidade às páginas web.</p>
+
+        <footer>
+            <p>Autor: Diogo Medeiros, novembro de 2025</p>
+        </footer>
+    </article>
+    <script src="script.js"></script>
+  </body>
+</html>

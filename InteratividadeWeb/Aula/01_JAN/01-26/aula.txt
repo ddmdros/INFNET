@@ -1,0 +1,18 @@
+Interatividade em páginas web (IPW)
+
+Duvida eu: o que caracteriza interatividade em um site? Quando ele deixa de ser um site estativo?
+
+Competencias
+- JS e objetos
+- paginas dinamicas 
+- DOM
+- páginas interativas com eventos
+- formularios
+
+ORIENTAÇÃO A OBJETOS
+
+Paradigmas de programação
+
+->> JS não é uma linguagem baseada em classes
+    mas permite que objetos sejam criados
+
