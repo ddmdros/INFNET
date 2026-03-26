@@ -1,0 +1,339 @@
+
+/*
+
+Fiz um moodboard de referência:
+
+https://www.figma.com/board/cSYBCBDgWsyIFR2UFWwnNs/AT-InteratividadeWeb-Moodboard-Diogo?node-id=0-1&t=D0XYEHRQg2GCDEa9-1
+
+*/
+
+/* #region 1. RESET E FONTE*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+/* #endregion */
+
+
+/* #region 2. ESTRUTURA GLOBAL (GRID) */
+
+body {
+    display: grid;
+    /* Sidebar fixa e o resto flexível */
+    grid-template-columns: 200px 1fr; 
+    grid-template-areas: 
+        "sidebar header"
+        "sidebar main"
+        "sidebar footer";
+    min-height: 100vh;
+    background-color: #121212;
+    color: white;
+}
+
+/* Atribuição áreas do grid */
+nav { grid-area: sidebar; }
+header { grid-area: header; }
+main { grid-area: main; }
+footer { grid-area: footer; }
+
+
+/* #region 3. HEADER e FOOTER */
+header, footer {
+    background-color: #121212;
+    border-bottom: 1px solid #333;
+    padding: 20px;
+    text-align: center;
+    color: #ccc;
+}
+
+footer {
+    border-top: 1px solid #333;
+    border-bottom: none;
+    font-size: 0.8rem;
+}
+
+#titulo-painel {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* #region 4. SIDEBAR NAV */
+
+nav {
+    background-color: #1a1a1a;
+    border-right: 1px solid #333;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.perfil-sidebar {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+#foto-perfil {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #8bec7d;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+#mensagem-boas-vindas{
+    font-size: 0.65rem;
+    padding: 5px;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.nome-user{
+    color: #8bec7d;
+    font-size: 0.95rem;  
+    font-weight: bold;
+}
+
+    /* Nav Links */
+    nav ul {
+        list-style: none;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #ccc;
+        font-size: 0.90rem;
+        display: block;
+        padding: 12px 15px;
+        border-radius: 8px;
+    }
+
+    nav a:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: #fff;
+    }
+
+    .active-link {
+        color: #8bec7d !important;
+        background-color: rgba(139, 236, 125, 0.1);
+    }
+
+/* #region 5. MAIN E SECTIONS (CARDS) */
+
+main {
+    display: grid;
+    /* Cards que se ajustam sozinhos. Tamanho mínimo: 350px. */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 25px;
+    padding: 30px;
+    align-content: start;
+}
+
+section{
+    background-color: #1a1a1a;
+    border: 1px solid rgba(139, 236, 125, 0.2);
+    border-radius: 15px;
+    padding: 25px;
+}
+
+section:hover{
+    border-color: rgba(139, 236, 125, 0.5);
+    transform: translateY(-5px);
+}
+
+.titulo-secao{
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+/* #endregion */
+
+
+/* #region 6. STATUS & BOTÕES */
+
+.status-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+#indicador-status{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #555;
+}
+
+.disponivel {
+    background-color: #8bec7d;
+}
+
+.ocupado {
+    background-color: #ff6b6b;
+}
+
+button{
+    margin-top: 15px;
+    background: transparent;
+    border: 1px solid #444;
+    color: #ccc;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+
+button:hover {
+    border-color: #8bec7d;
+    color: #fff;
+}
+
+
+/* #endregion */
+
+/* #region 7. SKILLS  */
+#lista-skills {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#lista-skills li {
+    background: rgba(139, 236, 125, 0.1);
+    border: 1px solid rgba(139, 236, 125, 0.3);
+    color: #8bec7d;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+}
+
+#lista-depoimentos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.item-depoimento {
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    animation: surgir 0.4s ease-out;
+}
+
+.texto-item {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #eee;
+}
+
+.autor-item {
+    color: #8bec7d;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    margin-top: 5px;
+    display: block;
+}
+/* #endregion */
+
+
+
+/* #region 4. STATUS
+
+.status-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+#indicador-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-box {
+    background-color: #555;
+}
+
+
+    
+*/
+
+
+/* #endregion */
+
+/* #region 5. DEPOIMENTOS */
+/* #secao-mural {
+    display: flex;
+    justify-content: center;
+}
+
+.card-mural {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(139, 236, 125, 0.3);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo-secao {
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+#lista-depoimentos {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+}
+
+.item-depoimento {
+    padding-bottom: 10px;
+}
+
+.texto-item {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #eee;
+    margin-bottom: 5px;
+}
+
+.autor-item {
+    color: #8bec7d;
+    font-weight: bold;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+ */
+
+/* #endregion */
