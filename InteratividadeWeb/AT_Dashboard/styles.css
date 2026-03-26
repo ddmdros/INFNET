@@ -1,0 +1,465 @@
+/* #region 1. Configurações gerais */
+/* Usei um grid container com aside para definir 
+que o menu de navegação ocupa 240px e o main 1fr (o resto da tela) 
+Coloquei algumas referencias visuais do projeto aqui:
+https://www.figma.com/board/cSYBCBDgWsyIFR2UFWwnNs/AT-InteratividadeWeb-Moodboard-Diogo?node-id=0-1&t=KQoDwqhK51Fw9DSs-1
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    height: 100vh;
+    transition: grid-template-columns 0.3s ease;
+}
+
+.app-container.reduzido {
+    grid-template-columns: 60px 1fr;
+}
+
+main {
+    overflow-y: auto;
+    background-color: #121212;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* #endregion */
+
+/* #region 2. nav */
+/* Estruturas gerais de estilo. Não fazem parte dos requisitos do AT */
+
+
+/* --- SIDEBAR GERAL --- */
+.sidebar {
+    background-color: #0d0d0d;
+    color: white;
+    border-right: 1px solid #222;
+    padding: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: padding 0.3s ease;
+}
+
+/* --- HEADER DA SIDEBAR (LOGO + BOTÃO) --- */
+.logo-sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #222;
+
+
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.icone-logo {
+    color: #4ade80;
+    font-size: 28px;
+}
+
+#btn-reduzir-nav {
+    background: transparent;
+    color: #888;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+#btn-reduzir-nav:hover {
+    background-color: #222;
+    color: #4ade80;
+    border-color: #4ade80;
+
+}
+
+/* --- LINKS DE NAVEGAÇÃO --- */
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar a:hover {
+    color: #e8f6ed;
+    background-color: rgba(178, 188, 182, 0.1);
+}
+
+.sidebar a.active-link {
+    color: #4ade80;
+    background-color: rgba(74, 222, 128, 0.1);
+}
+
+.material-symbols-outlined {
+    font-size: 20px;
+}
+
+
+/* ==================
+    SIDEBAR REDUZIDA
+   ================== */
+
+/* 1. Tira o padding lateral da sidebar para sobrar espaço */
+.app-container.reduzido .sidebar {
+    padding: 20px 0;
+}
+
+/* 2. Muda o Header para empilhar o ícone e o botão */
+.app-container.reduzido .logo-sidebar {
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 3. Centraliza a div do ícone da logo */
+.app-container.reduzido .logo-wrapper {
+    justify-content: center;
+    width: 100%;
+}
+
+/* 4. Esconde os textos da logo e dos links */
+.app-container.reduzido .sidebar .texto-logo,
+.app-container.reduzido .sidebar .texto-link {
+    display: none;
+}
+
+/* 5. Centraliza os ícones do menu perfeitamente */
+.app-container.reduzido .sidebar a {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* 6. Deixa uma cor de fundo mais clara que o link ativo 
+    para diferenciar a seleção (a mesma ideia foi aplicada
+    no container não reduzido */
+.app-container.reduzido .sidebar a:hover {
+    color: #e8f6ed;
+    background-color: rgba(178, 188, 182, 0.1);
+}
+
+.app-container.reduzido .sidebar a.active-link {
+    background-color: transparent;
+    color: #4ade80;
+}
+
+/* #endregion */
+
+
+/* #region 3. cards do main */
+
+/* #region 3.1 Card VISÃO GERAL DO PERFIL */
+
+/* #region 3.1.1 configs gerais card perfil */
+.card-info-usuario {
+    grid-column: span 4;
+    background-color: #1a1a1a;
+    border: 1px solid green;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.perfil-cards-internos {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    /* Duas colunas exatas (50% / 50%) */
+    /* gap: 20px; */
+}
+
+/* #endregion configs gerais card perfil*/
+
+/* #region configurações AVATART e TXT*/
+
+
+.layout-perfil-grid {
+    display: grid;
+    grid-template-rows: 1fr 1fr; 
+    align-items: start;
+}
+
+.perfil-row-superior {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    color: white;
+}
+
+.perfil-row-inferior {
+    display: flex;
+    flex-direction: row;
+}
+
+#foto-perfil {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #8bec7d;
+    object-fit: cover;
+}
+
+#foto-perfil:hover {
+    cursor: pointer;
+}
+
+.perfil-textos{
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.perfil-textos h2 {
+    font-size: 1.4rem;
+}
+
+#mensagem-boas-vindas{
+    text-transform: uppercase;
+    /* font-size: 0.80rem; */
+}
+
+.user-name-text{
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #38c767;
+}
+
+/* #endregion configurações AVATAR e TXT */
+
+
+
+.card-perfil-skills {
+    background-color: transparent;
+    border-radius: 8px;
+    min-height: 150px;
+    color: #fff;
+}
+
+.status-atual {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 5px;
+}
+
+#status-texto{
+    margin-top: 10px;
+}
+
+#btn-alternar-status {
+    padding: 5px 5px;
+    background-color: transparent;
+    border: 1px solid #4ade80;
+    color: #4ade80;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+
+#status-tag.disponivel {
+    color: #4ade80;
+}
+
+#status-tag.ocupado {
+    color: rgb(191, 135, 121);
+
+}
+
+
+
+/* #region 3.3 SKILLS */
+#lista-skills {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    min-height: 35px;
+}
+
+#lista-skills li {
+    background-color: #4ade80;
+    color: #121212;
+    font-weight: bold;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+
+    min-width: fit-content;
+}
+
+.input-group-skills {
+    display: flex;
+    min-width: 50px;
+    margin-top: 20px;
+    /* Dá um respiro entre a lista de skills e o input */
+    margin-bottom: 15px;
+    /* Espaço para o botão de remover embaixo */
+}
+
+.btn-skills {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#input-skills {
+    background-color: #222;
+    /* Fundo escuro */
+    border: 1px solid #4ade80;
+    /* Borda verde combinando com as tags */
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    /* Cantos arredondados */
+    outline: none;
+    /* Tira aquela borda azul feia do navegador ao clicar */
+    width: 100%;
+    max-width: 200px;
+    /* Impede de ficar gigante na tela */
+}
+
+#input-skills:focus {
+    box-shadow: 0 0 5px rgba(74, 222, 128, 0.4);
+}
+
+#btn-inserir-skill {
+    margin-left: 10px;
+    background-color: #4ade80;
+    color: #121212;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#btn-inserir-skill:hover {
+    background-color: #38c767;
+    /* Verde um pouquinho mais escuro no hover */
+}
+
+#btn-remover-ultima-skill {
+    margin-top: 10px;
+    background-color: transparent;
+    border: 1px solid #ef4444;
+    /* Borda Vermelha (indica perigo/exclusão) */
+    color: #ef4444;
+    /* Texto Vermelho */
+    padding: 8px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+#btn-remover-ultima-skill:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    /* Fundo avermelhado super leve no hover */
+}
+
+
+/* #endregion 3.3 SKILLS */
+
+/* #endregion 3.1 Card VISÃO GERAL DO PERFIL*/
+
+/* #endregion 3. cards do main */
+.descricao-header {
+    padding: 20px 30px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #222;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    /* Essa transição suaviza a gambiarra que vamos fazer no JS */
+    transition: background-color 0.3s ease;
+}
+
+
+/* #region RESPONSIVIDADE (revisar)*/
+
+/* =========================================
+   RESPONSIVIDADE (Telas menores que 900px)
+   ========================================= */
+@media (max-width: 900px) {
+    .app-container {
+        grid-template-columns: 1fr; /* Sidebar some ou vai pra cima */
+    }
+
+    .card-info-usuario {
+        grid-column: span 12; /* Card ocupa a largura toda */
+        padding: 20px;
+    }
+
+    /* Transforma as duas colunas em uma só */
+    .layout-perfil-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+
+    /* Centraliza as skills no mobile */
+    #lista-skills {
+        justify-content: center;
+    }
+
+    /* Ajusta o grupo de input para não vazar a tela */
+    .input-group-skills {
+        justify-content: center;
+        width: 100%;
+    }
+
+    #input-skills {
+        max-width: 160px; /* Um pouco menor para caber o botão ao lado */
+    }
+
+    /* Centraliza o botão de remover */
+    .btn-skills {
+        justify-content: center;
+    }
+}
+/* #endregion */

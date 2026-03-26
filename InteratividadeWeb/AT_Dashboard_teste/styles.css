@@ -1,0 +1,279 @@
+/* Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    height: 100vh;
+    transition: grid-template-columns 0.3s ease;
+}
+
+.app-container.reduzido {
+    grid-template-columns: 70px 1fr;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #0d0d0d;
+    border-right: 1px solid #222;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #4ade80;
+}
+
+#btn-reduzir-nav {
+    background: #1a1a1a;
+    color: #888;
+    border: 1px solid #333;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px 8px;
+}
+
+.sidebar ul { list-style: none; }
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #888;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: 0.2s;
+}
+
+.sidebar a:hover, .sidebar a.active-link {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+}
+
+/* Main Content */
+.content {
+    overflow-y: auto;
+    padding: 0;
+}
+
+.descricao-header {
+    padding: 20px 30px;
+    background: #161616;
+    border-bottom: 1px solid #222;
+    font-weight: 600;
+}
+
+.dashboard-grid {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
+
+/* --- CARD DE PERFIL (A Estrela do Show) --- */
+.card-info-usuario {
+    grid-column: span 4;
+    background: #1a1a1a;
+    border: 1px solid #282828;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.perfil-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 70px;
+    height: 70px;
+}
+
+#foto-perfil {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #333;
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 3px solid #1a1a1a;
+    background-color: #4ade80; /* Disponível */
+    transition: 0.3s;
+}
+
+.status-indicator.ocupado {
+    background-color: #ef4444; /* Vermelho */
+}
+
+.perfil-info #mensagem-boas-vindas {
+    font-size: 0.7rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.perfil-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #252525;
+    padding: 4px 12px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+#status-texto {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #4ade80;
+}
+
+#btn-alternar-status {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 0.7rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.divisor {
+    border: 0;
+    border-top: 1px solid #282828;
+    margin: 20px 0;
+}
+
+.perfil-body h3 {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+#lista-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    margin-bottom: 24px;
+}
+
+#lista-skills li {
+    background: rgba(74, 222, 128, 0.05);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.skills-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-group {
+    display: flex;
+    gap: 8px;
+}
+
+#input-skills {
+    flex: 1;
+    background: #121212;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    color: #fff;
+    outline: none;
+}
+
+#input-skills:focus { border-color: #4ade80; }
+
+#btn-inserir-skill {
+    background: #4ade80;
+    color: #000;
+    border: none;
+    padding: 0 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#btn-remover-ultima-skill {
+    background: none;
+    border: 1px solid #333;
+    color: #ef4444;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btn-remover-ultima-skill:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: #ef4444;
+}
+#lista-skills li:hover {
+    background: rgba(74, 222, 128, 0.2);
+    transform: translateY(-2px);
+    transition: 0.2s;
+    cursor: default;
+}
+/* Responsividade Básica */
+@media (max-width: 1024px) {
+    .card-info-usuario { grid-column: span 12; }
+    .app-container { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+}
+
+.perfil-info #mensagem-boas-vindas {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: -2px; /* Aproxima um pouco a saudação do nome */
+    display: block;      /* Garante que fique em linha própria */
+}

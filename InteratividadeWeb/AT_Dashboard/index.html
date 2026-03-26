@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreelanceBoard</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <header class="logo-sidebar">
+                <div class="logo-wrapper">
+                    <span class="material-symbols-outlined icone-logo">developer_board</span>
+                    <span class="texto-logo">FreelanceBoard</span>
+                </div>
+                <button id="btn-reduzir-nav">&lt;</button>
+            </header>
+
+            <nav>
+                <ul id="menu-lista">
+                    <li>
+                        <a href="#" class="active-link">
+                            <span class="material-symbols-outlined">home</span>
+                            <span class="texto-link">Início</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="material-symbols-outlined">folder</span>
+                            <span class="texto-link">Projetos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="material-symbols-outlined">group</span>
+                            <span class="texto-link">Clientes</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </aside>
+
+        <main class="content">
+            <!-- header do exercício 3 aqui -->
+            <header id="titulo-painel" class="descricao-header">
+                Título inicial
+            </header>
+
+            <section class="dashboard-grid">
+
+                <div class="card-info-usuario layout-perfil-grid">
+
+                    <div class="perfil-row-superior">
+                        <div>
+                            <img id="foto-perfil" src="https://cdn-icons-png.flaticon.com/512/3607/3607444.png">
+    
+                            <div class="status-atual">
+                                <span class="material-symbols-outlined disponivel"
+                                id="status-tag">radio_button_checked</span>
+                                <span id="status-texto">Disponível</span>
+                            </div>
+                            <button id="btn-alternar-status">Alternar status</button>
+
+                        </div>
+
+                            
+                        <div class="perfil-textos">
+                            <p id="mensagem-boas-vindas"></p>
+                            <p class="user-name-text">Diogo Medeiros</p>
+                        </div>
+                            
+
+                    </div>
+
+                    <div class="perfil-row-inferior">
+
+                        <div class="card-perfil-skills">
+                            <h2>Habilidades</h2>
+                            
+                            <div class="skills-atuais">
+                                <ul id="lista-skills">
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>JS</li>
+                                    <li>React</li>
+                                    <li>Node</li>
+                                </ul>
+
+                                <div class="btns-skills">
+                                    <button id="btn-remover-ultima-skill">Remover última</button>
+                                </div>
+                                <div class="input-group-skills">
+                                    <label for="input-skills"></label>
+                                    <input type="text" id="input-skills" placeholder="Insira uma skill">
+                                    <button id="btn-inserir-skill">Inserir</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
