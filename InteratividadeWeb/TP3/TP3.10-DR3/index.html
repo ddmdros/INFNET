@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Arquivo padrão</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+
+  <form action="" method="get" id="form">
+    <fieldset class="dados-pessoais">
+
+      <div class="label">
+      <label for="nome">Nome</label>
+      </div>
+      <input type="text" name="nome" id="nome" required>
+
+    </fieldset>
+
+    <fieldset class="nivel-senioridade">
+      <div class="label">
+        <label for="nivel" id="nivel" name="senioridade">Nível</label>
+      </div>
+
+      <input type="radio" id="senior" name="senioridade" value="senior" checked>
+      <label for="senior">Sênior</label><br>
+
+      <input type="radio" id="pleno" name="senioridade" value="pleno">
+      <label for="pleno">Pleno</label><br>
+
+      <input type="radio" id="junior" name="senioridade" value="junior">
+      <label for="junior">Júnior</label>
+    </fieldset>
+
+    <fieldset class="horarios">
+      <div class="label">
+        <label for="horarios">Disponibilidade</label>
+      </div>
+
+      <div class="check-box">
+        <input type="checkbox" name="presencial" id="presencial">
+        <label for="presencial">Presencial</label>
+      </div>
+
+      <div class="check-box">
+        <input type="checkbox" name="hibrido" id="hibrido">
+        <label for="hibrido">Híbrido</label>
+      </div>
+
+      <div class="check-box">
+        <input type="checkbox" name="remoto" id="remoto">
+        <label for="remoto">Remoto</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <button type="submit">Enviar</button>
+    </fieldset>
+
+
+
+
+  </form>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>

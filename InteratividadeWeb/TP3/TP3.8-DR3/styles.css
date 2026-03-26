@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+#form{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+input{
+    margin-bottom: 5px;
+}
+
+legend{
+    text-decoration: underline;
+}
+
+#envio{
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #28a745 ;
+    cursor: pointer;
+    border: none;
+    color:aliceblue;
+    font-weight: bold;
+}
+
+#envio:hover{
+    background-color: #218838;
+}
+
+fieldset{
+    border: none;
+}

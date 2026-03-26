@@ -1,0 +1,32 @@
+#pai{
+    display: flex;
+    justify-content: space-between;
+}
+
+#origem{
+    border: 5px solid steelblue;
+    width: 35%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+#destino{
+    border: 5px solid maroon;
+    width: 35%;
+    height: 80vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+#origem img,
+#destino img{
+    height: 50px;
+}

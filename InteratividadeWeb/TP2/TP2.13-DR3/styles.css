@@ -1,0 +1,9 @@
+.hide{
+    visibility: hidden;
+    
+    /* Se a gente quisesse que o modal não ocupasse espaço na tela, usaríamos o código abaixo */
+    /* Fui de hidden pq o exercício pediu para usar a classe "hide" na div, então achei mais lógico, mas é apenas um detalhe */
+    
+    /* display: none; */
+
+}

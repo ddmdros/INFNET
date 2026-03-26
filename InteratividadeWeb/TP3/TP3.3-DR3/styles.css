@@ -1,0 +1,66 @@
+/* usei regeions e subregions para ajudar */
+
+/* #region RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* #endregion */
+
+
+/* #region MAIN HTML */
+body{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+    /* #region MAIN MENU*/
+    header{
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    nav{
+        display: flex;
+        justify-content: flex-start;
+        align-items: left;
+        width: 60vw;
+        justify-content: space-between;
+    }
+
+    nav ul{
+        display: flex;
+        list-style: none;
+        gap: 25px;
+    }
+
+    a{
+        text-decoration: none;
+        color: inherit;
+        /* Como não é o propósito, não estilizei mt para deixar diferente,
+        mas se fosse um projeto que fosse para frente, eu certamente
+        prestaria atenção nisso */
+    }
+    /* #region MAIN MENU*/
+
+button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+/* #endregion */
+
+
+/* #region DARK MODE */
+body.dark-mode{
+    background-color: black;
+    color: white;
+}
+
+body.light-mode{
+    background-color: white;
+    color: black;
+}
+/* #endregion */

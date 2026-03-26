@@ -1,0 +1,19 @@
+.texto{
+    font-size: 24px;
+    color: maroon;
+}
+
+td, th{
+    border: 1px solid steelblue;
+}
+
+th{
+    background-color: lightblue;
+}
+
+.valor{
+    /* color: green; */
+    font-weight: 600;
+    text-align: right;
+}
+

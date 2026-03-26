@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- #region HEADER -->
+    <header id="titulo-painel" class="descricao-header">
+        Título inicial
+        <!-- Pensei em colocar um h1 aqui, mas como o exercício pediu 
+     "selecionar o elemento pelo ID e alterar o texto",
+    fiquei com medo de não cumprir a rubrica, então deixei o texto solto-->
+    </header>
+    <!-- #endregion -->
+
+    <!-- #region NAV -->
+    <nav>
+        <div class="perfil-sidebar">
+
+            <div class="avatar-wrapper">
+                <img id="foto-perfil"
+                    src="https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg?semt=ais_hybrid&w=740&q=80"
+                    alt="avatar inicial">
+                <input type="file" id="input-upload-avatar" accept="image/*" style="display: none;">
+            </div>
+
+            <p id="mensagem-boas-vindas"></p>
+            <!-- O AT pede para "adicionar ao texto", então deiei
+        o p vazio e manipulei com "+=" no script.
+        Adicionei id para manipular o estilo no CSS
+         -->
+
+            <div class="status-wrapper">
+                <div id="indicador-status" class="status-box"></div>
+                <p class="nome-user">Diogo Medeiros</p>
+            </div>
+            <button id="btn-status">Alternar status</button>
+
+        </div>
+
+
+        <ul id="menu-lista">
+            <li><a href="#secao-mural" class="active-link">Depoimentos</a></li>
+            <li><a href="#">Projetos</a></li>
+            <li><a href="#">Clientes</a></li>
+        </ul>
+    </nav>
+    <!-- #endregion -->
+
+    <!-- #region MAIN -->
+
+    <main>
+        <!-- Exercício 7: MURAL -->
+        <section id="secao-mural">
+            <h2 class="titulo-secao">Depoimentos dos Clientes</h2>
+            <div class="card-mural">
+                <div id="lista-depoimentos"></div>
+                <button id="btn-nova-frase">Gerar Depoimento</button>
+            </div>
+        </section>
+
+        <!-- Exercício 8 SKILLS -->
+        <section id="secao-skills">
+            <h2 class="titulo-secao">Skills</h2>
+
+            <div class="card-mural">
+                <ul id="lista-skills">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JS</li>
+                    <li>C#</li>
+                    <li>Java</li>
+                </ul>
+            </div>
+            <div>
+                <button id="btn-remove-skill">Remover Última Skill</button>
+                <button id="btn-adiciona-skill">Adicionar Skill Aleatória</button>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- #endregion -->
+
+
+    <footer>
+        <p id="contador-visitas">Calculando acessos...</p>
+        <p>FreelanceBoard © 2026 - Desenvolvido por Diogo Medeiros</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

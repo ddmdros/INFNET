@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Formulários</h1>
+    <!-- <input type="text" name="nomeUser" id="nomeUser"> -->
+
+    <form method="get">
+        <input type="hidden" name="turma" value="SOF-N1-FundamentosSOF">
+
+        <label for="nomeUser">Nome do Usuário</label>
+        <input type="text" name="nomeUser" id="nomeUser" placeholder="Escreva o seu nome" required><br>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Informe seu email" required><br>
+
+        <label for="pw">Senha</label>
+        <input type="password" placeholder="Digite sua senha" id="pwUser" required><br>
+
+        <label for="number">Numero</label>
+        <input type="number" name="numberUser" id="numberUser" min="0" max="10"><br>
+
+        <input type="file" name="" id=""><br>
+
+        <input type="date" name="" id=""><br>
+
+        <input type="tel"><br>
+
+        <input type="search" autocomplete="address-level1"><br>
+
+        <progress id="file" value="95" max="100">32%</progress>
+
+        <label for="hora">Data Hora</label>
+        <input type="date" min="2026-03-16" max="2026-03-20">
+        <input type="time" min="08:00:00">
+        <input type="datetime">
+        <input type="datetime-local">
+
+
+
+        <input type="submit" value="Enviar">
+    </form>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

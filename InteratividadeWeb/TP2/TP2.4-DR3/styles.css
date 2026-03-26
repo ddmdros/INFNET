@@ -1,0 +1,15 @@
+.borda {
+    border: 3px solid #FFD700; 
+    border-radius: 12px;
+}
+
+.texto {
+    color: #E2E8F0; 
+    font-size: 1.1rem;
+}
+
+.fundo {
+    background-color: #E7473C;
+    padding: 15px;
+    margin-bottom: 10px;
+}

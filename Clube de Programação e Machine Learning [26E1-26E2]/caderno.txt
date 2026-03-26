@@ -41,3 +41,7 @@ impasse: quando o conhecimento para a resolução de problemas não está direta
 subestado: estado para resolver impasses
 
 niveis de processamento: 1: reativo; 2: deliberado
+
+
+AULA 02 - 12/02
+
