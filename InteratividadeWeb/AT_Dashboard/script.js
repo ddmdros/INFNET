@@ -193,6 +193,38 @@ btnAlternarStatus.addEventListener("click", function () {
 // #region 7. DEPOIMENTOS
 
 
+const depoimentos = [
+    { texto: "Entrega excepcional e código muito bem estruturado.", autor: "Carla S., CEO" },
+    { texto: "O melhor custo-benefício para projetos Fullstack.", autor: "Marcos T., DevHouse" },
+    { texto: "Conseguiu traduzir nossa necessidade em uma interface linda.", autor: "Ana J., Designer" },
+    { texto: "Sempre disponível e muito transparente no processo.", autor: "Ricardo F., Freelancer" },
+];
+
+const containerDepoimentos = document.getElementById("section-depoimentos");
+const btnGerarDepoimento = document.getElementById("btn-gerar-depoimento");
+
+
+btnGerarDepoimento.addEventListener("click", function() {
+    
+    if(containerDepoimentos.childElementCount > 0){
+        alert("Depoimento do dia exibido. \nVolte amanhã para mais ou... Na verdade, só atualize a página.\nEstamos em fase de testes 😅");
+        return;
+    } else{
+        
+        const indiceAleatorio = Math.floor(Math.random() * depoimentos.length);
+        const depoimentoEscolhido = depoimentos[indiceAleatorio];
+        containerDepoimentos.style.border = "1px solid #9fdeb6";
+        
+        containerDepoimentos.innerHTML = `
+        <div class="item-depoimento">
+    <p class="texto-item">"${depoimentoEscolhido.texto}"</p>
+    <p class="autor-item"><strong>— ${depoimentoEscolhido.autor}</strong></p>
+    </div>
+    `;
+       
+}
+
+});
 // #endregion 7. DEPOIMENTOS
 
 
@@ -268,7 +300,8 @@ btnReduzir.addEventListener("click", function () {
     }
 });
 //#endregion
-// #endregion
+
+
 
 
 function atualizarSaudacao() {
@@ -289,3 +322,4 @@ function atualizarSaudacao() {
 
 // Chama a função assim que a página carrega
 atualizarSaudacao();
+// #endregion
