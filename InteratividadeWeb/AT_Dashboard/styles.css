@@ -41,6 +41,16 @@ main {
     padding: 20px;
 }
 
+
+.descricao-header {
+    padding: 20px 30px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #222;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
 /* #endregion */
 
 /* #region 2. nav */
@@ -183,240 +193,240 @@ main {
 
 /* #endregion */
 
-
-/* #region 3. cards do main */
-
-/* #region 3.1 Card VISÃO GERAL DO PERFIL */
-
-/* #region 3.1.1 configs gerais card perfil */
+/* #region 3 primeiro card */
 .card-info-usuario {
     grid-column: span 4;
-    background-color: #1a1a1a;
-    border: 1px solid green;
-    border-radius: 12px;
-    padding: 25px;
+    background: #1a1a1a;
+    border: 1px solid #282828;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-.perfil-cards-internos {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    /* Duas colunas exatas (50% / 50%) */
-    /* gap: 20px; */
-}
-
-/* #endregion configs gerais card perfil*/
-
-/* #region configurações AVATART e TXT*/
-
-
-.layout-perfil-grid {
-    display: grid;
-    grid-template-rows: 1fr 1fr; 
-    align-items: start;
-}
-
-.perfil-row-superior {
+.perfil-header {
     display: flex;
-    flex-direction: row;
-    gap: 40px;
-    color: white;
+    align-items: center;
+    gap: 18px;
 }
 
-.perfil-row-inferior {
-    display: flex;
-    flex-direction: row;
+.avatar-wrapper {
+    position: relative;
+    width: 70px;
+    height: 70px;
 }
 
 #foto-perfil {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    border: 2px solid #8bec7d;
     object-fit: cover;
-}
-
-#foto-perfil:hover {
+    border: 2px solid #333;
     cursor: pointer;
 }
 
-.perfil-textos{
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+#foto-perfil:hover{
+    filter: brightness(0.9);
 }
 
-.perfil-textos h2 {
-    font-size: 1.4rem;
+.status-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 3px solid #1a1a1a;
+    background-color: #4ade80;
+    transition: 0.3s;
 }
 
-#mensagem-boas-vindas{
+.status-indicator.ocupado {
+    background-color: #ef4444;
+}
+
+#foto-perfil.ocupado{
+    border-color: #ef4444 !important;
+}
+
+.perfil-info #mensagem-boas-vindas {
+    font-size: 0.7rem;
+    color: #666;
     text-transform: uppercase;
-    /* font-size: 0.80rem; */
+    letter-spacing: 0.5px;
 }
 
-.user-name-text{
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #38c767;
+.perfil-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
 }
 
-/* #endregion configurações AVATAR e TXT */
-
-
-
-.card-perfil-skills {
-    background-color: transparent;
-    border-radius: 8px;
-    min-height: 150px;
-    color: #fff;
-}
-
-.status-atual {
+.status-badge {
     display: flex;
     align-items: center;
-    justify-items: center;
-    gap: 5px;
+    gap: 8px;
+    background: #252525;
+    padding: 4px 12px;
+    border-radius: 20px;
+    width: fit-content;
 }
 
-#status-texto{
-    margin-top: 10px;
+#status-texto {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #4ade80;
 }
 
 #btn-alternar-status {
-    padding: 5px 5px;
-    background-color: transparent;
-    border: 1px solid #4ade80;
-    color: #4ade80;
-    border-radius: 6px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 0.7rem;
     cursor: pointer;
+    text-decoration: underline;
+}
+
+.divisor {
+    border: 0;
+    border-top: 1px solid #282828;
+    margin: 20px 0;
+}
+
+.perfil-body h3 {
+    font-size: 0.85rem;
+    color: #888;
     margin-bottom: 15px;
 }
 
-
-#status-tag.disponivel {
-    color: #4ade80;
-}
-
-#status-tag.ocupado {
-    color: rgb(191, 135, 121);
-
-}
-
-
-
-/* #region 3.3 SKILLS */
 #lista-skills {
-    list-style-type: none;
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
-    min-height: 35px;
+    gap: 8px;
+    list-style: none;
+    margin-bottom: 24px;
 }
 
 #lista-skills li {
-    background-color: #4ade80;
-    color: #121212;
-    font-weight: bold;
-    padding: 6px 16px;
-    border-radius: 999px;
-    font-size: 0.85rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 32px;
-
-    min-width: fit-content;
+    background: rgba(74, 222, 128, 0.05);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
 }
 
-.input-group-skills {
+.skills-actions {
     display: flex;
-    min-width: 50px;
-    margin-top: 20px;
-    /* Dá um respiro entre a lista de skills e o input */
-    margin-bottom: 15px;
-    /* Espaço para o botão de remover embaixo */
+    flex-direction: column;
+    gap: 10px;
 }
 
-.btn-skills {
-    display: flex;
-    justify-content: flex-start;
+.input-group {
+display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+
 }
 
 #input-skills {
-    background-color: #222;
-    /* Fundo escuro */
-    border: 1px solid #4ade80;
-    /* Borda verde combinando com as tags */
+    flex: 1;
+    min-width: 0;
+    background: #121212;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
     color: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
-    /* Cantos arredondados */
     outline: none;
-    /* Tira aquela borda azul feia do navegador ao clicar */
-    width: 100%;
-    max-width: 200px;
-    /* Impede de ficar gigante na tela */
 }
 
-#input-skills:focus {
-    box-shadow: 0 0 5px rgba(74, 222, 128, 0.4);
-}
+#input-skills:focus { border-color: #4ade80; }
 
 #btn-inserir-skill {
-    margin-left: 10px;
-    background-color: #4ade80;
-    color: #121212;
+    flex-shrink: 0;
+    white-space: nowrap;
+    background: #4ade80;
+    color: #000;
     border: none;
-    padding: 8px 15px;
-    border-radius: 6px;
-    font-weight: bold;
+    padding: 0 15px;
+    border-radius: 8px;
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-#btn-inserir-skill:hover {
-    background-color: #38c767;
-    /* Verde um pouquinho mais escuro no hover */
 }
 
 #btn-remover-ultima-skill {
-    margin-top: 10px;
-    background-color: transparent;
-    border: 1px solid #ef4444;
-    /* Borda Vermelha (indica perigo/exclusão) */
+    background: none;
+    border: 1px solid #333;
     color: #ef4444;
-    /* Texto Vermelho */
-    padding: 8px 8px;
-    border-radius: 6px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s;
+    transition: 0.2s;
 }
 
 #btn-remover-ultima-skill:hover {
-    background-color: rgba(239, 68, 68, 0.1);
-    /* Fundo avermelhado super leve no hover */
+    background: rgba(239, 68, 68, 0.1);
+    border-color: #ef4444;
+}
+#lista-skills li:hover {
+    background: rgba(74, 222, 128, 0.2);
+    transform: translateY(-2px);
+    transition: 0.2s;
+    cursor: default;
 }
 
-
-/* #endregion 3.3 SKILLS */
-
-/* #endregion 3.1 Card VISÃO GERAL DO PERFIL*/
-
-/* #endregion 3. cards do main */
-.descricao-header {
-    padding: 20px 30px;
-    background-color: #1a1a1a;
-    border-bottom: 1px solid #222;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #fff;
-    /* Essa transição suaviza a gambiarra que vamos fazer no JS */
-    transition: background-color 0.3s ease;
+.user-name-text {
+    color: #ffffff !important; /* Ignora heranças cinzas */
 }
+/* #endregion 3. primeiro card */
+
+/* #region extra */
+.duck-mode {
+    --cor-pato: #f39c12; /* Laranja bico */
+    --fundo-pato: #f1c40f; /* Amarelo penas */
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' style='font-size:24px;'><text y='50%'>🦆</text></svg>"), auto !important;
+}
+
+.duck-mode main{
+    background-color: #f39c12 !important;
+}
+
+.duck-mode .card-info-usuario {
+    animation: tremerPato 0.2s infinite;
+    border: 5px dashed #fff !important;
+}
+
+@keyframes tremerPato {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    25% { transform: translate(-1px, -2px) rotate(-1deg); }
+    50% { transform: translate(-3px, 0px) rotate(1deg); }
+    75% { transform: translate(3px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -1px) rotate(-1deg); }
+}
+
+.duck-mode img:not(#foto-perfil) {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.duck-mode .user-name-text { color: var(--cor-pato) !important; }
+.duck-mode .icone-logo { color: var(--cor-pato) !important; }
+.duck-mode #btn-inserir-skill { background-color: var(--cor-pato) !important; }
+
+.duck-mode #foto-perfil {
+    transform: rotate(360deg);
+    transition: 1s ease-in-out;
+}
+/* #endregion */
+
+
+
+
+
+
+
+
+
 
 
 /* #region RESPONSIVIDADE (revisar)*/
@@ -444,8 +454,12 @@ main {
 
     /* Centraliza as skills no mobile */
     #lista-skills {
-        justify-content: center;
-    }
+display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-start; /* Garante que fiquem sempre à esquerda */
+    width: 100%;
+    padding: 0;    }
 
     /* Ajusta o grupo de input para não vazar a tela */
     .input-group-skills {

@@ -12,7 +12,6 @@
 
 <body>
 
-
     <div class="app-container">
         <aside class="sidebar">
             <header class="logo-sidebar">
@@ -54,60 +53,47 @@
                 Título inicial
             </header>
 
-            <section class="dashboard-grid">
-
-                <div class="card-info-usuario layout-perfil-grid">
-
-                    <div class="perfil-row-superior">
-                        <div>
-                            <img id="foto-perfil" src="https://cdn-icons-png.flaticon.com/512/3607/3607444.png">
-    
-                            <div class="status-atual">
-                                <span class="material-symbols-outlined disponivel"
-                                id="status-tag">radio_button_checked</span>
+             <section class="dashboard-grid">
+                
+                <div class="card-info-usuario">
+                    <div class="perfil-header">
+                        <div class="avatar-wrapper">
+                            <input type="file" id="input-upload-avatar" accept="image/*" style="display: none;">
+                            <!-- exercicio 5 -->
+                            <img id="foto-perfil" src="https://cdn-icons-png.flaticon.com/512/3607/3607444.png" alt="Foto de Perfil">
+                            <span class="status-indicator disponivel" id="status-tag"></span>
+                        </div>
+                        
+                        <div class="perfil-info">
+                            <p id="mensagem-boas-vindas">Bem-vindo de volta,</p>
+                            <h2 class="user-name-text">Diogo Medeiros</h2>
+                            <div class="status-badge">
                                 <span id="status-texto">Disponível</span>
+                                <button id="btn-alternar-status">Alterar</button>
                             </div>
-                            <button id="btn-alternar-status">Alternar status</button>
-
                         </div>
-
-                            
-                        <div class="perfil-textos">
-                            <p id="mensagem-boas-vindas"></p>
-                            <p class="user-name-text">Diogo Medeiros</p>
-                        </div>
-                            
-
                     </div>
 
-                    <div class="perfil-row-inferior">
+                    <hr class="divisor">
 
-                        <div class="card-perfil-skills">
-                            <h2>Habilidades</h2>
-                            
-                            <div class="skills-atuais">
-                                <ul id="lista-skills">
-                                    <li>HTML</li>
-                                    <li>CSS</li>
-                                    <li>JS</li>
-                                    <li>React</li>
-                                    <li>Node</li>
-                                </ul>
+                    <div class="perfil-body">
+                        <h3>Minhas Habilidades</h3>
+                        <ul id="lista-skills">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JS</li>
+                            <li>React</li>
+                            <li>Node</li>
+                        </ul>
 
-                                <div class="btns-skills">
-                                    <button id="btn-remover-ultima-skill">Remover última</button>
-                                </div>
-                                <div class="input-group-skills">
-                                    <label for="input-skills"></label>
-                                    <input type="text" id="input-skills" placeholder="Insira uma skill">
-                                    <button id="btn-inserir-skill">Inserir</button>
-                                </div>
+                        <div class="skills-actions">
+                            <div class="input-group">
+                                <input type="text" id="input-skills" placeholder="Nova habilidade...">
+                                <button id="btn-inserir-skill">Adicionar</button>
                             </div>
-
+                            <button id="btn-remover-ultima-skill">Remover última</button>
                         </div>
-
                     </div>
-
                 </div>
 
             </section>
