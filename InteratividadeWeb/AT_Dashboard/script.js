@@ -1,5 +1,4 @@
-//MÓDULO 1: Estrutura de dados e navegação
-
+// #region MODULO 1 (1-4)
 //#region 1. OBJETO LITERAL (exercício 1)
 const Freelancer = {
     nome: "Diogo Medeiros",
@@ -19,6 +18,7 @@ const Freelancer = {
     }
 }
 //#endregion
+
 //#region 2. FUNÇÃO CONSTRUTORA (exercício 2)
 
 function Projeto(nome, valor, prazoISO) {
@@ -76,6 +76,9 @@ novoItemLi.innerHTML = `
 listaMenu.appendChild(novoItemLi);
 // #endregion
 
+// #endregion MODULO 1
+
+// #region MODULO 2 (5-8)
 // #region 5. GESTÃO DE AVATAR (exercício 5)
 
 // fiz um easter egg para cumprir esse requisito
@@ -92,25 +95,23 @@ inputUpload.addEventListener("change", function (event) {
     const arquivo = event.target.files[0];
 
     if (arquivo && arquivo.type.startsWith("image/")) {
-        
         const leitor = new FileReader();
 
         leitor.onload = function (e) {
-            
-            fotoPerfil.src = e.target.result;
+            const novaFoto = e.target.result; // A variável nasce aqui
+            fotoPerfil.src = novaFoto;
             
             // Requisitos do exercício
             fotoPerfil.alt = "Foto de perfil atualizada pelo usuário";
             fotoPerfil.setAttribute("title", "Usuário Verificado manualmente");
             fotoPerfil.style.borderColor = "#8bec7d";
 
+            // ATUALIZA OS COMENTÁRIOS AQUI DENTRO:
+            atualizarFotosDosComentarios(novaFoto); 
             console.log("Foto de perfil carregada pelo usuário com sucesso 🖼️");
         };
 
         leitor.readAsDataURL(arquivo);
-    } else {
-        console.error("Erro: Selecione um arquivo de imagem válido (.jpg, .png, etc.)");
-        alert("Por favor, selecione um arquivo de imagem válido.");
     }
 });
 
@@ -125,24 +126,19 @@ const somQuackCurto = new Audio('https://www.myinstants.com/media/sounds/quack.m
 
 // Função para ativar o Easter Egg do Pato
 function ativarEasterEggPato() {
-    document.body.classList.add("duck-mode");
-
-    musicaPato.play();
-    somQuackCurto.play();
-
-    fotoPerfil.src = "https://img.freepik.com/vetores-gratis/pato-com-personagem-de-desenho-animado-de-cabeca-verde_1308-96950.jpg?semt=ais_hybrid&w=740&q=80";
-    fotoPerfil.title = "Usuário Pato Verificado! 🦆";
-    fotoPerfil.style.borderColor = "#f39c12";
+    const linkPato = "https://img.freepik.com/vetores-gratis/pato-com-personagem-de-desenho-animado-de-cabeca-verde_1308-96950.jpg?semt=ais_hybrid&w=740&q=80";
     
-    document.getElementById("mensagem-boas-vindas").innerText = "Quack-vindo,";
-    document.querySelector(".user-name-text").innerText = "Pato de Medeiros";
+    document.body.classList.add("duck-mode");
+    // ... resto do seu código de áudio ...
 
-    let audio = new Audio('https://www.myinstants.com/media/sounds/quack.mp3');
-    audio.play();
+    fotoPerfil.src = linkPato;
+    // ... resto do seu código de texto ...
 
     console.log("Easter egg ativado! 🦆");
+    
+    // ATUALIZA USANDO O LINK DEFINIDO ACIMA:
+    atualizarFotosDosComentarios(linkPato);
 }
-
 function desativarEasterEggE_Restaurar() {
 
     document.body.classList.remove("duck-mode");
@@ -158,6 +154,8 @@ function desativarEasterEggE_Restaurar() {
     document.querySelector(".user-name-text").innerText = "Diogo Medeiros";
 
     console.log("Easter Egg desativado! Foto restaurada.");
+
+    atualizarFotosDosComentarios(urlOriginal);
 }
 
 // #endregion
@@ -192,7 +190,6 @@ btnAlternarStatus.addEventListener("click", function () {
 
 // #region 7. DEPOIMENTOS
 
-
 const depoimentos = [
     { texto: "Entrega excepcional e código muito bem estruturado.", autor: "Carla S., CEO" },
     { texto: "O melhor custo-benefício para projetos Fullstack.", autor: "Marcos T., DevHouse" },
@@ -214,7 +211,8 @@ btnGerarDepoimento.addEventListener("click", function() {
         const indiceAleatorio = Math.floor(Math.random() * depoimentos.length);
         const depoimentoEscolhido = depoimentos[indiceAleatorio];
         containerDepoimentos.style.border = "1px solid #9fdeb6";
-        
+        // o exercício pediu para gerar um novo <p>, mas gerei dois pra ficar bonitinho, tá? <3
+
         containerDepoimentos.innerHTML = `
         <div class="item-depoimento">
     <p class="texto-item">"${depoimentoEscolhido.texto}"</p>
@@ -226,7 +224,6 @@ btnGerarDepoimento.addEventListener("click", function() {
 
 });
 // #endregion 7. DEPOIMENTOS
-
 
 // #region 8. SKILLS
 const listaSkills = document.getElementById("lista-skills");
@@ -281,6 +278,277 @@ inputSkill.addEventListener("keydown", function (event) {
 });
 
 // #endregion 8. SKILLS
+// #endregion MODULO 2
+
+// #region MODULO 2 (9-12)
+// #region 9. CONTADOR VISUALIZAÇÕES
+let contadorVisualizacoes = 0;
+
+const spanContadorVisualizacoes = document.getElementById("contador-visualizacoes");
+const btnVisualizarPerfil = document.getElementById("btn-ver-perfil-publico");
+
+spanContadorVisualizacoes.innerHTML = contadorVisualizacoes;
+if (btnVisualizarPerfil && spanContadorVisualizacoes){
+
+    
+    btnVisualizarPerfil.addEventListener("click", function(){
+        contadorVisualizacoes++;
+        spanContadorVisualizacoes.innerHTML = contadorVisualizacoes;
+        btnVisualizarPerfil.innerHTML = `Visualizando...`;
+        console.log(`Perfil visualizado. Total: ${contadorVisualizacoes}`)
+        
+    });
+    
+    btnVisualizarPerfil.addEventListener("mouseover", function() {
+        btnVisualizarPerfil.style.backgroundColor = "#22c55e";
+        //adicionar translate e transition 
+        // btnVisualizarPerfil.style.transform = "scale(1.05)";
+    });
+    
+    btnVisualizarPerfil.addEventListener("mouseout", function() {
+        btnVisualizarPerfil.style.backgroundColor = "#4ade80";
+        btnVisualizarPerfil.style.transform = "scale(1)";
+    });
+}
+// #endregion
+
+// #region 10. LOAD EVENT
+window.addEventListener("load", function(){
+    console.log("Sistema carregado");
+    const idiomaNavegador = navigator.language;
+    const urlAtual = window.location.href;
+
+    console.log("Idioma: " + idiomaNavegador);
+    console.log("URL: " + urlAtual);
+    
+
+    if(idiomaNavegador && urlAtual){
+        // this.alert("Informações de segurança verificadas. Tudo certo."); // comentado para nao atrapalhar o desenvolvimento
+        // window.location.href = "https://www.infnet.edu.br";
+    }
+});
+
+// #endregion
+
+// #region 11 DEPLOY
+const btnDeploy = document.getElementById("btn-deploy");
+
+btnDeploy.addEventListener("mouseover", function(){
+    btnDeploy.style.backgroundColor = "var(--cor-hover-btn)";
+})
+
+btnDeploy.addEventListener("mouseout", function(){
+    btnDeploy.style.backgroundColor = "var(--cor-primaria)";
+});
+
+btnDeploy.addEventListener("mousedown", function(){
+    btnDeploy.textContent = "Enviando...";
+})
+
+// #endregion
+
+// #region 12. Post Interativo
+
+const btnToggleComentarios = document.getElementById("btn-abrir-comentarios");
+const secaoComentarios = document.getElementById("lista-comentarios");
+const inputComent = document.getElementById("input-novo-comentario");
+const btnEnviar = document.getElementById("btn-enviar-comentario");
+const containerScroll = document.getElementById("container-scroll");
+const spanContador = document.getElementById("comentarios-count");
+const spanGramatica = document.getElementById("comentarios-noun-agreement");
+
+// #region toogle footbar
+btnToggleComentarios.addEventListener("click", () => {
+    // Verifica se está escondido
+    if (secaoComentarios.style.display === "none" || secaoComentarios.style.display === "") {
+        secaoComentarios.style.display = "flex"; // Mostra
+        inputComent.focus();
+    } else {
+        secaoComentarios.style.display = "none"; // Esconde
+    }
+});
+// #endregion
+
+// #region comentarios 
+function atualizarContadorComentarios() {
+    const totalReal = containerScroll.querySelectorAll(".comentario").length;    
+
+    spanContador.innerText = totalReal;
+
+    if (totalReal <= 1) {
+        spanGramatica.innerText = "comentário";
+    } else {
+        spanGramatica.innerText = "comentários";
+    }
+}
+
+// Evento postar novo comentário
+btnEnviar.addEventListener("click", () => {
+    const texto = inputComent.value.trim();
+    const urlFotoAtual = document.getElementById("foto-perfil").src;
+
+    if (texto !== "") {
+        const novoComent = document.createElement("div");
+        novoComent.classList.add("comentario");
+        
+        novoComent.innerHTML = `
+            <img class="img-perfil-coment" src="${urlFotoAtual}" alt="Avatar do usuário">
+            <p class="txt-comentario">${texto}</p>
+        `;
+
+        containerScroll.appendChild(novoComent);
+        
+        // Limpa a caixa de texto e rola para o último comentário
+        inputComent.value = "";
+        containerScroll.scrollTop = containerScroll.scrollHeight;
+
+        atualizarContadorComentarios();
+        
+        // Atualiza a gramática (plural/singular)
+        spanGramatica.innerText = qtdComentarios === 1 || qtdComentarios === 0 ? "comentário" : "comentários";
+    }
+});
+
+// Postar apertando a tecla "Enter" no teclado
+inputComent.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // Evita que a página recarregue
+        btnEnviar.click();      // Simula um clique no botão
+    }
+});
+
+atualizarContadorComentarios();
+
+function atualizarFotosDosComentarios(novaUrl) {
+    // Busca todas as imagens que têm a classe dos comentários
+    const todasAsFotosComentarios = document.querySelectorAll(".img-perfil-coment");
+    
+    // Para cada foto encontrada, atualiza o src para a nova URL
+    todasAsFotosComentarios.forEach(foto => {
+        foto.src = novaUrl;
+    });
+}
+// #endregion
+
+// #region curtida
+const btnAreaCurtida = document.getElementById("btn-curtir-post");
+const iconeCoracao = document.getElementById("coracao");
+
+const spanCurtidasCount = document.getElementById("curtidas-count");
+const spanCurtidasGramatica = document.getElementById("curtidas-noun-agreement");
+
+let totalCurtidas = 0;
+let curtido = false;
+
+btnAreaCurtida.style.cursor = "pointer";
+
+btnAreaCurtida.addEventListener("click", function() {
+    curtido = !curtido; // Alterna o estado (Toggle)
+
+    if (curtido) {
+        totalCurtidas++;
+        // Estiliza apenas o ícone
+        iconeCoracao.style.color = "var(--cor-secundaria)"; 
+        iconeCoracao.style.fontVariationSettings = "'FILL' 1"; 
+        // Efeito visual de clique na área toda
+        this.style.transform = "scale(1.05)";
+    } else {
+        totalCurtidas--;
+        iconeCoracao.style.color = "white"; 
+        iconeCoracao.style.fontVariationSettings = "'FILL' 0"; 
+        this.style.transform = "scale(1)";
+    }
+
+    // Atualiza o número na tela
+    spanCurtidasCount.innerText = totalCurtidas;
+
+    // Lógica de Gramática: 0 e 1 são tratados como SINGULAR
+    if (totalCurtidas <= 1) {
+        spanCurtidasGramatica.innerText = "curtida";
+    } else {
+        spanCurtidasGramatica.innerText = "curtidas";
+    }
+    
+    console.log(`Interação: ${curtido ? "Curtiu" : "Descurtiu"}. Total: ${totalCurtidas}`);
+});
+
+// Reset do scale após o clique para manter a fluidez
+btnAreaCurtida.addEventListener("transitionend", () => {
+    if (!curtido) btnAreaCurtida.style.transform = "scale(1)";
+});
+
+const imgProjeto = document.getElementById("img-projeto");
+const coracaoFeedback = document.getElementById("coracao-feedback");
+let ultimoClique = 0;
+
+// Função mestre para curtir (reutilizável)
+function executarCurtida() {
+    // Se ainda não estiver curtido, dispara a lógica de curtir
+    if (!curtido) {
+        btnAreaCurtida.click(); // Reutiliza a lógica que já criamos no botão
+    }
+
+    // Feedback visual do coração grande no meio da imagem
+    coracaoFeedback.classList.add("animar");
+    
+    setTimeout(() => {
+        coracaoFeedback.classList.remove("animar");
+    }, 500); // Some após meio segundo
+}
+
+// Detector de Double Tap
+imgProjeto.addEventListener("click", function(e) {
+    const tempoAtual = new Date().getTime();
+    const diferencaMedia = tempoAtual - ultimoClique;
+
+    // Se o tempo entre cliques for menor que 300ms, é um Double Tap
+    if (diferencaMedia < 300 && diferencaMedia > 0) {
+        executarCurtida();
+    }
+
+    ultimoClique = tempoAtual;
+});
+
+// #endregion
+
+// #region bookmark
+const btnSalvar = document.getElementById("btn-salvar");
+const iconeBookmark = document.getElementById("bookmark-txt");
+const fraseBtnBookmark = document.querySelector(".salvar-frase");
+
+btnSalvar.addEventListener("click", function(){
+
+    if(iconeBookmark.textContent === "bookmark"){
+        alert("Projeto salvo na coleção!")
+        iconeBookmark.textContent = "bookmark_added";
+
+        iconeBookmark.style.color = "var(--cor-primaria)";
+        fraseBtnBookmark.style.color = "var(--cor-primaria)";
+        fraseBtnBookmark.textContent = "Salvo";
+        fraseBtnBookmark.style.transform = "scale(1.1)"; // seguindo o padrão da curtida
+
+    } else{
+        alert("Projeto removido na coleção!")
+        iconeBookmark.textContent = "bookmark";
+
+        iconeBookmark.style.color = "white";
+        fraseBtnBookmark.style.color = "white";
+        fraseBtnBookmark.textContent = "Salvar";
+        fraseBtnBookmark.style.transform = "scale(1)";
+    }
+
+});
+
+// #endregion
+
+
+// #endregion
+
+// #endregion MODULO 2 (9-12)
+
+
+
+
 // #region Extras
 
 

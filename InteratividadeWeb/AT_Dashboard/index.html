@@ -53,17 +53,18 @@
                 Título inicial
             </header>
 
-             <section class="dashboard-grid">
-                
-                <div class="card-info-usuario">
+            <section class="dashboard-grid">
+
+                <div class="card-1-info-usuario">
                     <div class="perfil-header">
                         <div class="avatar-wrapper">
                             <input type="file" id="input-upload-avatar" accept="image/*" style="display: none;">
                             <!-- exercicio 5 -->
-                            <img id="foto-perfil" src="https://cdn-icons-png.flaticon.com/512/3607/3607444.png" alt="Foto de Perfil">
+                            <img id="foto-perfil" src="https://cdn-icons-png.flaticon.com/512/3607/3607444.png"
+                                alt="Foto de Perfil">
                             <span class="status-indicator disponivel" id="status-tag"></span>
                         </div>
-                        
+
                         <div class="perfil-info">
                             <p id="mensagem-boas-vindas">Bem-vindo de volta,</p>
                             <h2 class="user-name-text">Diogo Medeiros</h2>
@@ -97,29 +98,110 @@
                 </div>
 
 
-            <section class="card-dois">
-                <h2>Galeria de projetos</h2>
-            </section>
-            
-            
-            <section class="card-depoimento">
-                <h2>Depoimento do dia</h2>
+                <section class="card-2-galeria">
+                    <div class="social-media-container">
+                        <div class="social-media-main">
+                            <img src="img/HugoScreenShot.png" alt="Projeto Hugo" class="img-projeto-zoom"
+                                id="img-projeto">
+
+                            <span class="material-symbols-outlined" id="coracao-feedback">favorite</span>
+                        </div>
+                        <div class="social-media-footer">
+
+                            <div class="legenda-publicacao">
+                                <span class="username-social-media">ddmdros</span>
+                                <span class="txt-legenda">Novo projeto em C# disponível! <span class="hashtag">#gamedev #softwareengineering</span></span></div>
+
+                            <div class="interacoes">
+
+                                <div class="btn-interacao-item" id="btn-curtir-post">
+                                    <span class="material-symbols-outlined" id="coracao">favorite</span>
+                                    <p class="curtidas-frase">
+                                        <span id="curtidas-count">0</span>
+                                        <span id="curtidas-noun-agreement">curtida</span>
+                                    </p>
+                                </div>
+
+                                <div class="btn-interacao-item" id="btn-abrir-comentarios">
+                                    <span class="material-symbols-outlined" id="comentario">chat_bubble</span>
+                                    <p class="num-comentarios-frase">
+                                        <span id="comentarios-count"></span>
+                                        <span id="comentarios-noun-agreement">comentário</span>
+                                    </p>
+                                </div>
+
+                                <div class="btn-interacao-item" id="btn-salvar">
+                                    <span class="material-symbols-outlined" id="bookmark-txt">bookmark</span>
+                                    <p class="salvar-frase">Salvar</p>
+                                </div>
+
+                            </div>
+                            <div class="secao-comentarios" id="lista-comentarios" style="display: none;">
+                                <div class="container-scroll-comentarios" id="container-scroll">
+                                    <div class="comentario">
+                                        <img class="img-perfil-coment"
+                                            src="https://img.freepik.com/fotos-gratis/mulher-de-tiro-medio-passando-bons-momentos-ao-ar-livre_23-2150757174.jpg?semt=ais_hybrid&w=740&q=80"
+                                            alt="Imagem de perfil fake simulando mulher jovem">
+                                        <p class="txt-comentario">Ficou incrível! Parabéns, Diogo!</p>
+                                    </div>
+                                    <div class="comentario">
+                                        <img class="img-perfil-coment"
+                                            src="https://img.freepik.com/fotos-gratis/homem-bonito-posando-e-sorrindo_23-2149396133.jpg?semt=ais_hybrid&w=740&q=80"
+                                            alt="Imagem de perfil fake simulando homem jovem">
+                                        <p class="txt-comentario">Boaaa! Passa o link do GitHub pra nois!</p>
+                                    </div>
+                                </div>
+
+                                <div class="input-comentario-group">
+                                    <input type="text" id="input-novo-comentario"
+                                        placeholder="Escreva um comentário...">
+                                    <button id="btn-enviar-comentario">Postar</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+                <section class="card-3-depoimento">
+                    <h2>Depoimento do dia</h2>
                     <div id="section-depoimentos"></div>
-    
+
                     <button id="btn-gerar-depoimento">Gerar Depoimento</button>
-                
-            </section>
-            
-            
-            <section class="card-quatro">
-                <h2>Deploy</h2>
-            </section>
-            
-            
-            <section class="card-cinco">
-                <h2>Visualizações</h2>
-                
-            </section>
+
+                </section>
+
+
+                <section class="card-4-visualizacao-perfil">
+                    <div class="header-visualizacao">
+                        <h2>Visualizações</h2>
+                    </div>
+
+                    <div class="visualizacao-wrapper">
+                        <p>Visualizações do perfil: <span id="contador-visualizacoes"></span></p>
+                        <button id="btn-ver-perfil-publico">Ver perfil público</button>
+                    </div>
+                </section>
+
+                <section class="card-5-deploy">
+                    <div class="header-visualizacao">
+                        <h2>Deploy</h2>
+                    </div>
+                    <div class="visualizacao-wrapper">
+                        <!-- <p>3 Ativos</p> -->
+                        <button id="btn-deploy">Fazer deploy</button>
+                    </div>
+                </section>
+
+
+                <!-- <section class="card-5-projetos">
+                    <h2>Visualizações</h2>
+
+                </section> -->
 
 
             </section>
