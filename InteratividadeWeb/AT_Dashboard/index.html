@@ -19,8 +19,9 @@
                     <span class="material-symbols-outlined icone-logo">developer_board</span>
                     <span class="texto-logo">FreelanceBoard</span>
                 </div>
-                <button id="btn-reduzir-nav">&lt;</button>
-            </header>
+<button id="btn-reduzir-nav">
+    <span class="material-symbols-outlined" id="icone-toggle">menu</span>
+</button>            </header>
 
             <nav>
                 <ul id="menu-lista">
@@ -89,7 +90,7 @@
 
                         <div class="skills-actions">
                             <div class="input-group">
-                                <input type="text" id="input-skills" placeholder="Nova habilidade...">
+                                <input type="text" class="input-list" id="input-skills" placeholder="Nova habilidade...">
                                 <button id="btn-inserir-skill">Adicionar</button>
                             </div>
                             <button id="btn-remover-ultima-skill">Remover última</button>
@@ -159,6 +160,7 @@
                                 </div>
                             </div>
 
+
                         </div>
 
                     </div>
@@ -169,7 +171,9 @@
 
                 <section class="card-3-depoimento">
                     <h2>Depoimento do dia</h2>
-                    <div id="section-depoimentos"></div>
+                    <div id="section-depoimentos">
+
+                    </div>
 
                     <button id="btn-gerar-depoimento">Gerar Depoimento</button>
 
@@ -198,10 +202,18 @@
                 </section>
 
 
-                <!-- <section class="card-5-projetos">
-                    <h2>Visualizações</h2>
+                <section class="card-6-task-list">
+                    <h2>Task log</h2>
+                    
+                    <div class="input-group">
+                            <input type="text" class="input-list" id="input-task" placeholder="Nova tarefa...">
+                            <button id="btn-inserir-task">Adicionar tarefa</button>
+                    </div>
 
-                </section> -->
+                    <div class="active-task-list"></div>
+
+                </section>
+                
 
 
             </section>

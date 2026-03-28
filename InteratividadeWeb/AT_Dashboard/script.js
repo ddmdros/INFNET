@@ -278,9 +278,11 @@ inputSkill.addEventListener("keydown", function (event) {
 });
 
 // #endregion 8. SKILLS
-// #endregion MODULO 2
 
-// #region MODULO 2 (9-12)
+// #endregion
+
+// #region MODULO 3 (9-12)
+
 // #region 9. CONTADOR VISUALIZAÇÕES
 let contadorVisualizacoes = 0;
 
@@ -544,8 +546,47 @@ btnSalvar.addEventListener("click", function(){
 
 // #endregion
 
-// #endregion MODULO 2 (9-12)
+// #endregion
 
+// #region MODULO 4 (13-16)
+
+// #region 13. TASK LIST
+const inputTask = document.getElementById("input-task");
+const btnInserirTask = document.getElementById("btn-inserir-task");
+
+inputTask.addEventListener("focus", function(){
+    
+});
+
+const taskList = [];
+
+btnInserirTask.addEventListener("click", function(){
+    let novaTask = inputTask.value;
+    taskList.push(novaTask);
+
+    if(novaTask.length < 4){
+        inputTask.style.borderColor = "var(--cor-secundaria)";
+        alert("A descrição da tarefa deve conter pelo menos 4 caracteres");
+    } else{
+        inputTask.style.borderColor = "var(--cor-primaria)";
+
+        inputTask.value = "";
+    }
+
+});
+
+
+inputTask.addEventListener("keydown", function(event){
+
+    if (event.key === "Enter") {
+        event.preventDefault();
+        btnInserirTask.click();
+    }
+});
+
+
+
+// #endregion
 
 
 
@@ -590,4 +631,9 @@ function atualizarSaudacao() {
 
 // Chama a função assim que a página carrega
 atualizarSaudacao();
+
+
+if (window.innerWidth <= 1024) {
+    document.querySelector('.app-container').classList.add('reduzido');
+}
 // #endregion

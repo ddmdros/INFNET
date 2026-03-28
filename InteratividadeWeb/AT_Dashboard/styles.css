@@ -42,6 +42,7 @@ main {
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(180px, auto);
     gap: 20px;
     padding: 20px;
 }
@@ -226,14 +227,26 @@ section p{
 
 /* #region 3. Configurações gerais dos cards do dashboard */
 
+.card-1-info-usuario,
+.card-2-galeria {
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+}
+
 .card-1-info-usuario {
     grid-column: 1 / span 4;
     grid-row: 1 / span 2;
     background: #1a1a1a;
     border: 1px solid #282828;
     border-radius: 16px;
-    padding: 24px;
+    padding: 34px 24px 24px 24px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 5px;
 }
 
 .card-2-galeria {
@@ -248,32 +261,34 @@ section p{
 
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .card-3-depoimento {
-    grid-column: 1 / span 3;
-    grid-row: 3 / span 2;
+    grid-column: 9 / span 2;
+    grid-row: 1 / span 2;
     background: #1a1a1a;
     border: 1px solid #282828;
     border-radius: 16px;
     padding: 24px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 
-    max-height: 300px;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    align-self: start;
 }
 
 
 .card-4-visualizacao-perfil,
 .card-5-deploy {
-    grid-column: 9 / span 2;
+    grid-column: 11 / span 2;
     /* grid-row: 1; */
     background: #1a1a1a;
     border: 1px solid #282828;
     border-radius: 16px;
     padding: 20px;
-    height: 140px;
+    /* height: 150px; */
     
     /* Configuração Flexbox */
     display: flex;
@@ -290,11 +305,21 @@ section p{
     grid-row: 2;
 }
 
+.card-6-task-list{
+    grid-column: 1 / span 6;
+    grid-row: 3;
+    background-color: #1a1a1a;
+    border: 1px solid #282828;
+    border-radius: 16px;
+    padding: 20px;
+    height: 300px;
+}
+
 
 /* #endregion */
 
 
-/* #region 3.1 card 1 - usuario */
+/* #region 3.1 card 1 - CARD USUARIO */
 
 
 .perfil-header {
@@ -420,10 +445,13 @@ display: flex;
     gap: 10px;
     width: 100%;
     margin-top: 15px;
+    
 
 }
 
-#input-skills {
+
+
+.input-list {
     flex: 1;
     min-width: 0;
     background: #121212;
@@ -434,7 +462,7 @@ display: flex;
     outline: none;
 }
 
-#input-skills:focus { border-color: var(--cor-primaria); }
+.input-list:focus { border-color: var(--cor-primaria); }
 
 #btn-inserir-skill {
     flex-shrink: 0;
@@ -483,7 +511,7 @@ display: flex;
 }
 /* #endregion 3. primeiro card */
 
-/* #region 3.2 card 2 - ?? */
+/* #region 3.2 card 2 - POST INTERATIVO*/
 
 .social-media-container{
     border: 1px solid var(--cor-primaria);
@@ -493,6 +521,8 @@ display: flex;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    flex: 1;
+    min-height: 0;
 }
 
 #coracao-feedback {
@@ -723,7 +753,7 @@ display: flex;
 }
 /* #endregion */
 
-/* #region 3.3. card 3 depoimento */
+/* #region 3.3. card 3 CARD DEPOIMENTO */
 
 
 #btn-gerar-depoimento {
@@ -742,7 +772,11 @@ display: flex;
     transform: translateY(-2px);
     transition: 0.2s;
 }
+
+
 #section-depoimentos{
+
+    flex-grow: 1;
     min-height: 150px;
     background-color:#222;
     margin: 20px 0;
@@ -783,10 +817,10 @@ display: flex;
     margin: 0;
 }
 
+
 /* #endregion */
 
-
-/* #region 3.4 cards visualização e deploy */
+/* #region 3.4 CARDS VISUALIZAÇÃO E DEPLOY */
 
 .visualizacao-wrapper{
     flex-grow: 1; 
@@ -838,7 +872,21 @@ display: flex;
 
 /* #endregion  */
 
+/* #region 3.5 TASK LIST */
+.active-task-list{
+    background-color:#222;
+    height: 100%;
+    margin-top: 25px;
+    border-radius: 15px;
+    overflow-y: auto;
+}
 
+.card-6-task-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* #endregion */
 
 
 
@@ -929,6 +977,45 @@ display: flex;
     /* Centraliza o botão de remover */
     .btn-skills {
         justify-content: center;
+    }
+}
+
+/* Quando a tela for menor que 1100px (ou zoom equivalente) */
+@media (max-width: 1100px) {
+    
+    /* 1. O Grid agora tem apenas 1 coluna real para os cards */
+    .dashboard-grid {
+        grid-template-columns: 1fr; 
+        grid-auto-rows: auto; /* Altura automática conforme o conteúdo */
+    }
+
+    /* 2. Forçamos TODOS os cards a ignorarem o 'span' original e ocuparem 100% */
+    .card-1-info-usuario,
+    .card-2-galeria,
+    .card-3-depoimento,
+    .card-4-visualizacao-perfil,
+    .card-5-deploy,
+    .card-6-task-list {
+        grid-column: 1 / -1 !important; /* O '-1' significa 'até o fim da linha' */
+        grid-row: auto !important;     /* Deixa eles empilharem naturalmente */
+        height: auto;                  /* Evita que o card fique espremido ou cortado */
+        min-height: 250px;             /* Garante uma altura mínima visual */
+    }
+
+    /* 3. Ajuste importante: Libere o scroll do corpo da página */
+    html, body {
+        overflow: auto !important; 
+        height: auto;
+    }
+
+    .app-container {
+        display: flex;       /* Muda de grid para flex para empilhar Sidebar e Main */
+        flex-direction: column;
+        height: auto;
+    }
+
+    main {
+        overflow: visible;   /* O scroll agora é da página, não só do main */
     }
 }
 /* #endregion */
