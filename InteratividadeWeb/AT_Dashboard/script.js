@@ -633,7 +633,4 @@ function atualizarSaudacao() {
 atualizarSaudacao();
 
 
-if (window.innerWidth <= 1024) {
-    document.querySelector('.app-container').classList.add('reduzido');
-}
 // #endregion
