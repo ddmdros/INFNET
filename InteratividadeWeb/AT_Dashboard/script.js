@@ -1,4 +1,6 @@
 // #region MODULO 1 (1-4)
+
+
 //#region 1. OBJETO LITERAL (exercício 1)
 const Freelancer = {
     nome: "Diogo Medeiros",
@@ -200,27 +202,52 @@ const depoimentos = [
 const containerDepoimentos = document.getElementById("section-depoimentos");
 const btnGerarDepoimento = document.getElementById("btn-gerar-depoimento");
 
+function iniciarContagemRegressiva(duracaoEmSegundos, elemento) {
+    let tempoRestante = duracaoEmSegundos;
+
+    const intervalo = setInterval(function () {
+        const horas = Math.floor(tempoRestante / 3600);
+        const minutos = Math.floor((tempoRestante % 3600) / 60);
+        const segundos = tempoRestante % 60;
+
+        const hrsFormatadas = String(horas).padStart(2, '0');
+        const minFormatados = String(minutos).padStart(2, '0');
+
+            elemento.innerText = `Disponível em\n${hrsFormatadas}h ${minFormatados}m`;
+
+        tempoRestante--;
+
+        if (tempoRestante < 0) {
+            clearInterval(intervalo);
+            elemento.innerText = "Gerar Depoimento";r
+            elemento.disabled = false;
+            elemento.classList.remove("on-hold");
+            elemento.style.cursor = "pointer";
+        }
+    }, 1000);
+}
 
 btnGerarDepoimento.addEventListener("click", function() {
-    
-    if(containerDepoimentos.childElementCount > 0){
-        alert("Depoimento do dia exibido. \nVolte amanhã para mais ou... Na verdade, só atualize a página.\nEstamos em fase de testes 😅");
-        return;
-    } else{
-        
-        const indiceAleatorio = Math.floor(Math.random() * depoimentos.length);
-        const depoimentoEscolhido = depoimentos[indiceAleatorio];
-        containerDepoimentos.style.border = "1px solid #9fdeb6";
-        // o exercício pediu para gerar um novo <p>, mas gerei dois pra ficar bonitinho, tá? <3
 
-        containerDepoimentos.innerHTML = `
-        <div class="item-depoimento">
-    <p class="texto-item">"${depoimentoEscolhido.texto}"</p>
-    <p class="autor-item"><strong>— ${depoimentoEscolhido.autor}</strong></p>
-    </div>
-    `;
+    if(confirm("Quer gerar o depoimento de hoje? Lembre-se de que você só pode gerar um novo depoimento a cada 24 horas.\n(Ou atualize a página, ainda estamos em reforma :P )")){
+
+            const indiceAleatorio = Math.floor(Math.random() * depoimentos.length);
+            const depoimentoEscolhido = depoimentos[indiceAleatorio];
+            containerDepoimentos.style.border = "1px solid #9fdeb6";
+    
+            containerDepoimentos.innerHTML = `
+            <div class="item-depoimento">
+        <p class="texto-item">"${depoimentoEscolhido.texto}"</p>
+        <p class="autor-item"><strong>— ${depoimentoEscolhido.autor}</strong></p>
+        </div>
+        `;
+            btnGerarDepoimento.classList.add("on-hold");
+            btnGerarDepoimento.disabled = true;
+            iniciarContagemRegressiva(86400, btnGerarDepoimento);
+
+    }
        
-}
+// }
 
 });
 // #endregion 7. DEPOIMENTOS
@@ -553,16 +580,14 @@ btnSalvar.addEventListener("click", function(){
 // #region 13. TASK LIST
 const inputTask = document.getElementById("input-task");
 const btnInserirTask = document.getElementById("btn-inserir-task");
+const containerTaskList = document.getElementsByClassName("active-task-list")[0];
 
 inputTask.addEventListener("focus", function(){
     
 });
 
-const taskList = [];
-
 btnInserirTask.addEventListener("click", function(){
-    let novaTask = inputTask.value;
-    taskList.push(novaTask);
+    const novaTask = inputTask.value.trim();
 
     if(novaTask.length < 4){
         inputTask.style.borderColor = "var(--cor-secundaria)";
@@ -570,11 +595,15 @@ btnInserirTask.addEventListener("click", function(){
     } else{
         inputTask.style.borderColor = "var(--cor-primaria)";
 
+        containerTaskList.insertAdjacentHTML("beforeend", `<div class="task-element">
+                            <p>${novaTask}</p>
+                            <button class="btn-remove-task material-symbols-outlined">delete</button>
+                        </div>`);
+
         inputTask.value = "";
     }
 
 });
-
 
 inputTask.addEventListener("keydown", function(event){
 
@@ -584,6 +613,20 @@ inputTask.addEventListener("keydown", function(event){
     }
 });
 
+
+containerTaskList.addEventListener("click", function(event){
+    const botaoClicado = event.target.closest(".btn-remove-task");
+
+    if(!botaoClicado){
+        return;
+    }
+
+    const tarefaParaRemover = botaoClicado.closest(".task-element");
+
+    if(tarefaParaRemover){
+        tarefaParaRemover.remove();
+    }
+});
 
 
 // #endregion

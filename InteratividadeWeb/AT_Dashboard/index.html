@@ -19,9 +19,10 @@
                     <span class="material-symbols-outlined icone-logo">developer_board</span>
                     <span class="texto-logo">FreelanceBoard</span>
                 </div>
-<button id="btn-reduzir-nav">
-    <span class="material-symbols-outlined" id="icone-toggle">menu</span>
-</button>            </header>
+                <button id="btn-reduzir-nav">
+                    <span class="material-symbols-outlined" id="icone-toggle">menu</span>
+                </button>
+            </header>
 
             <nav>
                 <ul id="menu-lista">
@@ -56,7 +57,7 @@
 
             <section class="dashboard-grid">
 
-                <div class="card-1-info-usuario">
+                <div class="card-info-usuario">
                     <div class="perfil-header">
                         <div class="avatar-wrapper">
                             <input type="file" id="input-upload-avatar" accept="image/*" style="display: none;">
@@ -90,7 +91,8 @@
 
                         <div class="skills-actions">
                             <div class="input-group">
-                                <input type="text" class="input-list" id="input-skills" placeholder="Nova habilidade...">
+                                <input type="text" class="input-list" id="input-skills"
+                                    placeholder="Nova habilidade...">
                                 <button id="btn-inserir-skill">Adicionar</button>
                             </div>
                             <button id="btn-remover-ultima-skill">Remover última</button>
@@ -99,7 +101,7 @@
                 </div>
 
 
-                <section class="card-2-galeria">
+                <section class="card-galeria">
                     <div class="social-media-container">
                         <div class="social-media-main">
                             <img src="img/HugoScreenShot.png" alt="Projeto Hugo" class="img-projeto-zoom"
@@ -111,7 +113,9 @@
 
                             <div class="legenda-publicacao">
                                 <span class="username-social-media">ddmdros</span>
-                                <span class="txt-legenda">Novo projeto em C# disponível! <span class="hashtag">#gamedev #softwareengineering</span></span></div>
+                                <span class="txt-legenda">Novo projeto em C# disponível! <span class="hashtag">#gamedev
+                                        #softwareengineering</span></span>
+                            </div>
 
                             <div class="interacoes">
 
@@ -169,10 +173,14 @@
                 </section>
 
 
-                <section class="card-3-depoimento">
-                    <h2>Depoimento do dia</h2>
+                <section class="card-depoimento">
+                    <!-- <h2>Depoimento do dia</h2> -->
                     <div id="section-depoimentos">
-
+                        <div class="item-depoimento">
+                            <p class="autor-item" style="font-size: 20px; font-weight: 500; color: rgb(144, 152, 144)">
+                                <strong>Depoimento<br>do dia</strong>
+                            </p>
+                        </div>
                     </div>
 
                     <button id="btn-gerar-depoimento">Gerar Depoimento</button>
@@ -180,9 +188,9 @@
                 </section>
 
 
-                <section class="card-4-visualizacao-perfil">
+                <section class="card-visualizacao-perfil">
                     <div class="header-visualizacao">
-                        <h2>Visualizações</h2>
+                        <!-- <h2>Visualizações</h2> -->
                     </div>
 
                     <div class="visualizacao-wrapper">
@@ -191,9 +199,9 @@
                     </div>
                 </section>
 
-                <section class="card-5-deploy">
+                <section class="card-deploy">
                     <div class="header-visualizacao">
-                        <h2>Deploy</h2>
+                        <!-- <h2>Deploy</h2> -->
                     </div>
                     <div class="visualizacao-wrapper">
                         <!-- <p>3 Ativos</p> -->
@@ -202,24 +210,121 @@
                 </section>
 
 
-                <section class="card-6-task-list">
-                    <h2>Task log</h2>
-                    
+                <section class="card-task-list">
+                    <h2>Lista de tarefas</h2>
+
                     <div class="input-group">
-                            <input type="text" class="input-list" id="input-task" placeholder="Nova tarefa...">
-                            <button id="btn-inserir-task">Adicionar tarefa</button>
+                        <input type="text" class="input-list" id="input-task" placeholder="Nova tarefa...">
+                        <button id="btn-inserir-task">Adicionar tarefa</button>
                     </div>
 
-                    <div class="active-task-list"></div>
+                    <div class="active-task-list">
+
+                        <div class="task-element">
+                            <p>Terminar AT Interatividade</p>
+                            <button class="btn-remove-task material-symbols-outlined">delete</button>
+                        </div>
+
+                        <div class="task-element">
+                            <p>Terminar AT IA</p>
+                            <button class="btn-remove-task material-symbols-outlined">delete</button>
+                        </div>
+
+                        <div class="task-element">
+                            <p>Terminar AT JSII</p>
+                            <button class="btn-remove-task material-symbols-outlined">delete</button>
+                        </div>
+                    </div>
+
 
                 </section>
-                
+
+                <section class="card-cadastros">
+                    <div class="wireframe-cadastros">
+                        <header>
+                            <div class="toggle-cadastro">
+                                <div class="cadastro-pj tab-A active" data-target="conteudo-pj">
+                                    <h3>Cliente corporativo</h3>
+                                </div>
+                                <div class="cadastro-pf tab-B" data-target="conteudo-pf">
+                                    <h3>Desenvolvedor parceiro</h3>
+                                </div>
+                            </div>
+                        </header>
+
+                        <div class="cadastro-form-container">
+                            <div id="conteudo-pj" class="tab-content active">
+                                <h3>Cadastro de Empresa (CNPJ)</h3>
+                                <div class="formularios-cadastro">
+
+                                    <form method="GET" id="form-cadastro-pj" class="formulario-wrapper" novalidate>
+
+                                        <div class="wrapper-form">
+                                            <label for="pj-nome">Nome</label>
+                                            <input type="text" class="input-list" name="nome" placeholder="Nome"
+                                                id="pj-nome">
+                                            <span class="regras-negocio-labels-cadastro" id="span-nome">Mínimo de 4 caracteres, deve
+                                                conter a sigla "SA"</span>
+                                        </div>
+
+                                        <div class="wrapper-form">
+                                            <label for="regras-negocio-labels-cadastro">Data Fundação</label>
+                                            <input type="number" class="input-list" name="data-fundacao" placeholder="Data de fundação">
+                                            <span class="regras-negocio-labels-cadastro">Data posterior a
+                                                01/01/2000</span>
+                                        </div>
+
+                                        <div class="wrapper-form">
+
+                                            <label for="input-cadastro-pj-email">Email</label>
+
+                                            <input type="email" class="input-list" name="email" id="input-cadastro-pj-email"
+                                                placeholder="Email">
+                                        </div>
+
+                                        <!-- <span class="regras-negocio-labels-cadastro">Deve ter "@" e "." (com "@" antes do ponto e pelo menos 1 caractere entre eles).</span> -->
+
+                                        <!-- <input type="email" class="input-list" id="input-cadastro-pj-nome" placeholder="Email">
+                                        <span class="regras-negocio-labels-cadastro inactive-general">Deve ter "@" e "." (com "@" antes do ponto e pelo menos 1 caractere entre eles).</span> -->
+                                        <div class="wrapper-form">
+                                            <label for="">Atuação</label>
+                                            <!-- <textarea name="" id="" placeholder="Descrição"></textarea> -->
+                                            <select name="" id="select-cadastro-pj-atuacao">
+                                                <option value="">--Selecione uma opção--</option>
+                                                <option value="vendas">Vendas</option>
+                                                <option value="marketing">Marketing</option>
+                                                <option value="aplicativos">Aplicativos</option>
+                                            </select>
+                                            <!-- <span class="regras-negocio-labels-cadastro">Máximo de 50 caracteres .</span> -->
+                                        </div>
+
+                                        <div class="wrapper-form" id="cadastro-pj-descricao-area">
+                                            <label for="">Descrição</label>
+                                            <textarea name="" id="" placeholder="Descrição"></textarea>
+                                            <span class="regras-negocio-labels-cadastro">Máximo de 50 caracteres
+                                                .</span>
+                                        </div>
+                                        <!-- <div class="wrapper-form"> -->
+
+                                        <button type="submit" id="btn-cadastrar-empresa">Cadastrar Empresa</button>                                        <!-- </div> -->
+
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="conteudo-pf" class="tab-content">
+                                <p>Cadastro de Desenvolvedor (CPF)</p>
+                                <input type="text" class="input-list" placeholder="Nome completo...">
+                                <input type="text" class="input-list" placeholder="CPF...">
+                                <button class="btn-primary">Cadastrar Freelancer</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
 
 
             </section>
-
-
-
 
         </main>
     </div>
