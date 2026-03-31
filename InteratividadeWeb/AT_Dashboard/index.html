@@ -13,15 +13,15 @@
 <body>
 
     <div class="app-container">
+
         <aside class="sidebar">
-            <header class="logo-sidebar">
+            <header>
                 <div class="logo-wrapper">
-                    <span class="material-symbols-outlined icone-logo">developer_board</span>
                     <span class="texto-logo">FreelanceBoard</span>
+                    <button id="btn-reduzir-nav">
+                        <span class="material-symbols-outlined" id="icone-toggle">menu</span>
+                    </button>
                 </div>
-                <button id="btn-reduzir-nav">
-                    <span class="material-symbols-outlined" id="icone-toggle">menu</span>
-                </button>
             </header>
 
             <nav>
@@ -253,80 +253,137 @@
                         </header>
 
                         <div class="cadastro-form-container">
+
                             <div id="conteudo-pj" class="tab-content active">
                                 <h3>Cadastro de Empresa (CNPJ)</h3>
+
                                 <div class="formularios-cadastro">
-
-                                    <form method="GET" id="form-cadastro-pj" class="formulario-wrapper" novalidate>
+                                    <form method="POST" id="form-cadastro-pj" class="formulario-wrapper" novalidate>
 
                                         <div class="wrapper-form">
-                                            <label for="pj-nome">Nome</label>
-                                            <input type="text" class="input-list" name="nome" placeholder="Nome"
-                                                id="pj-nome">
-                                            <span class="regras-negocio-labels-cadastro" id="span-nome">Mínimo de 4 caracteres, deve
-                                                conter a sigla "SA"</span>
+                                            <label for="pj-nome">Nome da Empresa</label>
+                                            <input type="text" class="input-list" name="nome" id="pj-nome"
+                                                placeholder="Ex: Tech Solutions SA">
+                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-nome">
+                                                Mínimo de 4 caracteres, deve conter a sigla "SA"
+                                            </span>
                                         </div>
 
                                         <div class="wrapper-form">
-                                            <label for="regras-negocio-labels-cadastro">Data Fundação</label>
-                                            <input type="number" class="input-list" name="data-fundacao" placeholder="Data de fundação">
-                                            <span class="regras-negocio-labels-cadastro">Data posterior a
-                                                01/01/2000</span>
+                                            <label for="pj-data">Data Fundação</label>
+                                            <input type="date" class="input-list" name="data-fundacao" id="pj-data">
+                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-data">
+                                                Data posterior a 01/01/2000
+                                            </span>
                                         </div>
 
                                         <div class="wrapper-form">
-
-                                            <label for="input-cadastro-pj-email">Email</label>
-
-                                            <input type="email" class="input-list" name="email" id="input-cadastro-pj-email"
-                                                placeholder="Email">
+                                            <label for="pj-email">Email Corporativo</label>
+                                            <input type="email" class="input-list" name="email" id="pj-email"
+                                                placeholder="contato@empresa.com">
+                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-email">
+                                                Deve conter "@" e "." (com "@" antes do ponto)
+                                            </span>
                                         </div>
 
-                                        <!-- <span class="regras-negocio-labels-cadastro">Deve ter "@" e "." (com "@" antes do ponto e pelo menos 1 caractere entre eles).</span> -->
-
-                                        <!-- <input type="email" class="input-list" id="input-cadastro-pj-nome" placeholder="Email">
-                                        <span class="regras-negocio-labels-cadastro inactive-general">Deve ter "@" e "." (com "@" antes do ponto e pelo menos 1 caractere entre eles).</span> -->
                                         <div class="wrapper-form">
-                                            <label for="">Atuação</label>
-                                            <!-- <textarea name="" id="" placeholder="Descrição"></textarea> -->
-                                            <select name="" id="select-cadastro-pj-atuacao">
+                                            <label for="pj-atuacao">Atuação</label>
+                                            <select name="atuacao" id="pj-atuacao" class="select-cadastro">
                                                 <option value="">--Selecione uma opção--</option>
                                                 <option value="vendas">Vendas</option>
                                                 <option value="marketing">Marketing</option>
                                                 <option value="aplicativos">Aplicativos</option>
                                             </select>
-                                            <!-- <span class="regras-negocio-labels-cadastro">Máximo de 50 caracteres .</span> -->
+                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-atuacao">
+                                                Selecione uma das opções acima
+                                            </span>
                                         </div>
 
                                         <div class="wrapper-form" id="cadastro-pj-descricao-area">
-                                            <label for="">Descrição</label>
-                                            <textarea name="" id="" placeholder="Descrição"></textarea>
-                                            <span class="regras-negocio-labels-cadastro">Máximo de 50 caracteres
-                                                .</span>
+                                            <label for="pj-descricao">Descrição da Empresa</label>
+                                            <textarea id="pj-descricao" name="descricao"
+                                                placeholder="Conte um pouco sobre o negócio..."
+                                                maxlength="100"></textarea>
+                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-descricao">
+                                                Máximo de 50 caracteres
+                                            </span>
                                         </div>
-                                        <!-- <div class="wrapper-form"> -->
 
-                                        <button type="submit" id="btn-cadastrar-empresa">Cadastrar Empresa</button>                                        <!-- </div> -->
+                                        <button type="submit" id="btn-cadastrar-empresa">Cadastrar Empresa</button>
 
                                     </form>
                                 </div>
                             </div>
 
+
                             <div id="conteudo-pf" class="tab-content">
-                                <p>Cadastro de Desenvolvedor (CPF)</p>
-                                <input type="text" class="input-list" placeholder="Nome completo...">
-                                <input type="text" class="input-list" placeholder="CPF...">
-                                <button class="btn-primary">Cadastrar Freelancer</button>
+                                <form method="GET" id="form-cadastro-pf" class="formulario-wrapper" novalidate>
+
+                                    <div class="wrapper-form">
+                                        <label for="user-login">Login</label>
+                                        <input type="text" class="input-list" name="user-login" placeholder="Login"
+                                            id="user-login">
+                                        <span class="regras-negocio-labels-cadastro">Máximo de 8 caracteres</span>
+                                    </div>
+
+                                    <div class="wrapper-form">
+                                        <label for="idade-user">Idade</label>
+                                        <input type="number" class="input-list" name="idade-user" placeholder="Idade">
+                                        <span class="regras-negocio-labels-cadastro">Maior que 12 anos</span>
+                                    </div>
+
+                                    <div class="wrapper-form">
+                                        <label for="genero-user">Gênero</label>
+                                        <select name="selecao-genero" id="select-genero-user">
+                                            <option value="">--Selecione uma opção--</option>
+                                            <option value="masculino">Masculino</option>
+                                            <option value="feminino">Feminino</option>
+                                            <option value="nao-binario">Não binário</option>
+                                            <option value="outros">Outros/Prefiro não informar</option>
+
+                                        </select>
+                                    </div>
+
+                                    <div class="wrapper-form">
+                                        <label>Estilos Musicais</label>
+                                        <div class="checkbox-group">
+                                            <label><input type="checkbox" name="musica" value="rock"> Rock</label>
+                                            <label><input type="checkbox" name="musica" value="mpb"> MPB</label>
+                                            <label><input type="checkbox" name="musica" value="funk"> Funk</label>
+                                            <label><input type="checkbox" name="musica" value="pop"> Pop</label>
+                                        </div>
+                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-musica">Selecione pelo
+                                            menos 2 opções</span>
+                                    </div>
+
+                                    <div class="wrapper-form">
+                                        <label for="pf-senha">Senha</label>
+                                        <input type="password" class="input-list" id="pf-senha" placeholder="Senha">
+                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-senha">Entre 4 e 10
+                                            caracteres</span>
+                                    </div>
+
+                                    <div class="wrapper-form">
+                                        <label for="pf-senha-confirma">Confirmar Senha</label>
+                                        <input type="password" class="input-list" id="pf-senha-confirma"
+                                            placeholder="Repita a senha">
+                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-senha-confirma">As
+                                            senhas devem ser iguais</span>
+                                    </div>
+
+                                    <button type="submit" id="btn-cadastrar-pf">Cadastrar Desenvolvedor</button>
+                                </form>
                             </div>
                         </div>
-
                     </div>
-                </section>
+
+    </div>
+    </section>
 
 
-            </section>
+    </section>
 
-        </main>
+    </main>
     </div>
 
     <script src="script.js"></script>

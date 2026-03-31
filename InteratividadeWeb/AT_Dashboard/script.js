@@ -631,7 +631,218 @@ containerTaskList.addEventListener("click", function(event){
 
 // #endregion
 
+// #region 14. cadastro
 
+// #region 14.1 logica toggle
+// 1. Selecionamos as abas (as divs dentro do toggle) e os blocos de conteúdo
+const abas = document.querySelectorAll('.toggle-cadastro > div');
+const conteudos = document.querySelectorAll('.tab-content');
+
+abas.forEach(aba => {
+    aba.addEventListener('click', () => {
+        // 2. Remove a classe 'active' de todas as abas para "apagar" a anterior
+        abas.forEach(a => a.classList.remove('active'));
+        
+        // 3. Adiciona 'active' na aba que você acabou de clicar
+        aba.classList.add('active');
+
+        // 4. Pega o ID do conteúdo que queremos mostrar
+        // Note: No seu HTML anterior usamos o atributo 'data-target'
+        const alvoId = aba.getAttribute('data-target');
+
+        // 5. Esconde todos os conteúdos e mostra apenas o que coincide com o ID
+        conteudos.forEach(conteudo => {
+            conteudo.classList.remove('active');
+            if (conteudo.id === alvoId) {
+                conteudo.classList.add('active');
+            }
+        });
+    });
+});
+// #endregion
+
+
+// #region 14.2 validacao pj
+// 1. SELEÇÃO DE ELEMENTOS
+const formPJ = document.getElementById("form-cadastro-pj");
+const inputNome = document.getElementById("pj-nome");
+const inputData = document.getElementById("pj-data");
+const inputEmail = document.getElementById("pj-email");
+const selectAtuacao = document.getElementById("pj-atuacao");
+const textareaDesc = document.getElementById("pj-descricao");
+
+// 2. FUNÇÕES DE VALIDAÇÃO (LÓGICA PURA)
+
+function validarNomePJ(valor) {
+    const nome = valor.trim();
+    return nome.length >= 4 && nome.toUpperCase().includes("SA");
+}
+
+function validarDataPJ(valor) {
+    if (!valor) return false;
+    const dataDigitada = new Date(valor);
+    const dataLimite = new Date("2000-01-01");
+    return dataDigitada > dataLimite;
+}
+
+function validarEmailPJ(valor) {
+    const arroba = valor.indexOf("@");
+    const ponto = valor.lastIndexOf(".");
+    // Regras: tem @ e ., @ não é o primeiro, ponto vem pelo menos 2 casas depois do @, e não é o último
+    return arroba > 0 && ponto > arroba + 1 && ponto < valor.length - 1;
+}
+
+function validarAtuacaoPJ(valor) {
+    return valor !== "";
+}
+
+function validarDescricaoPJ(valor) {
+    const texto = valor.trim();
+    return texto.length > 0 && texto.length <= 50;
+}
+
+// 3. FUNÇÃO DE FEEDBACK VISUAL
+function aplicarFeedback(input, spanId, eValido, forçarErro = false) {
+    const span = document.getElementById(spanId);
+    
+    if (eValido) {
+        input.classList.add("campo-validado");
+        input.classList.remove("campo-invalido");
+        span.classList.remove("destaque-erro");
+        span.classList.add("destaque-sucesso");
+    } else {
+        input.classList.remove("campo-validado");
+        span.classList.remove("destaque-sucesso");
+        
+        // Só aplicamos o vermelho se o erro for forçado (no submit)
+        if (forçarErro) {
+            input.classList.add("campo-invalido");
+            span.classList.add("destaque-erro");
+        }
+    }
+}
+
+// 4. EVENTOS DE INPUT (Feedback de Sucesso em tempo real)
+inputNome.addEventListener("input", () => aplicarFeedback(inputNome, "erro-pj-nome", validarNomePJ(inputNome.value)));
+inputData.addEventListener("input", () => aplicarFeedback(inputData, "erro-pj-data", validarDataPJ(inputData.value)));
+inputEmail.addEventListener("input", () => aplicarFeedback(inputEmail, "erro-pj-email", validarEmailPJ(inputEmail.value)));
+selectAtuacao.addEventListener("change", () => aplicarFeedback(selectAtuacao, "erro-pj-atuacao", validarAtuacaoPJ(selectAtuacao.value)));
+textareaDesc.addEventListener("input", () => aplicarFeedback(textareaDesc, "erro-pj-descricao", validarDescricaoPJ(textareaDesc.value)));
+
+// 5. EVENTO DE SUBMIT (Validação Final de Erro)
+formPJ.addEventListener("submit", (event) => {
+    event.preventDefault(); // Impede o envio para validar
+
+    const nomeOk = validarNomePJ(inputNome.value);
+    const dataOk = validarDataPJ(inputData.value);
+    const emailOk = validarEmailPJ(inputEmail.value);
+    const atuacaoOk = validarAtuacaoPJ(selectAtuacao.value);
+    const descOk = validarDescricaoPJ(textareaDesc.value);
+
+    // Força a exibição visual do erro em todos os campos que falharem
+    aplicarFeedback(inputNome, "erro-pj-nome", nomeOk, true);
+    aplicarFeedback(inputData, "erro-pj-data", dataOk, true);
+    aplicarFeedback(inputEmail, "erro-pj-email", emailOk, true);
+    aplicarFeedback(selectAtuacao, "erro-pj-atuacao", atuacaoOk, true);
+    aplicarFeedback(textareaDesc, "erro-pj-descricao", descOk, true);
+
+    if (nomeOk && dataOk && emailOk && atuacaoOk && descOk) {
+        alert("Empresa cadastrada com sucesso! 🏢🚀");
+        formPJ.reset();
+        
+        // Limpa as classes de sucesso após o reset
+        [inputNome, inputData, inputEmail, selectAtuacao, textareaDesc].forEach(el => {
+            el.classList.remove("campo-validado");
+        });
+        document.querySelectorAll(".regras-negocio-labels-cadastro").forEach(span => {
+            span.classList.remove("destaque-sucesso");
+        });
+    } else {
+        console.warn("Formulário contém erros. Corrija-os para prosseguir.");
+    }
+});
+// #endregion
+
+
+
+// #region 14.3 validacao pf
+const formPF = document.getElementById("form-cadastro-pf");
+
+// Funções de Validação PF
+function validarLoginPF(valor) {
+    return valor.length > 0 && valor.length <= 8;
+}
+
+function validarIdadePF(valor) {
+    const idade = parseInt(valor);
+    return !isNaN(idade) && idade > 12;
+}
+
+function validarMusicaPF() {
+    // Seleciona todos os checkboxes com name="musica" que estão checados
+    const selecionados = document.querySelectorAll('input[name="musica"]:checked');
+    return selecionados.length >= 2;
+}
+
+function validarSenhaPF(senha, confirma) {
+    const tamanhoOk = senha.length >= 4 && senha.length <= 10;
+    const iguais = senha === confirma && senha !== "";
+    return { tamanhoOk, iguais };
+}
+
+// Evento Submit PF
+formPF.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // Elementos
+    const inputLogin = document.getElementById("pf-login");
+    const inputIdade = document.getElementById("pf-idade");
+    const selectGenero = document.getElementById("pf-genero");
+    const inputSenha = document.getElementById("pf-senha");
+    const inputConfirma = document.getElementById("pf-senha-confirma");
+    const spanMusica = document.getElementById("erro-pf-musica");
+
+    // Validações
+    const loginOk = validarLoginPF(inputLogin.value.trim());
+    const idadeOk = validarIdadePF(inputIdade.value);
+    const generoOk = selectGenero.value !== "";
+    const musicaOk = validarMusicaPF();
+    const senhasResult = validarSenhaPF(inputSenha.value, inputConfirma.value);
+
+    // Função interna para aplicar visual (reaproveitando sua lógica)
+    const feedback = (el, spanId, valido) => {
+        const span = document.getElementById(spanId);
+        if (valido) {
+            el.classList.add("campo-validado");
+            el.classList.remove("campo-invalido");
+            span.classList.remove("destaque-erro");
+        } else {
+            el.classList.add("campo-invalido");
+            el.classList.remove("campo-validado");
+            span.classList.add("destaque-erro");
+        }
+    };
+
+    // Aplicar visual nos campos simples
+    feedback(inputLogin, "erro-pf-login", loginOk);
+    feedback(inputIdade, "erro-pf-idade", idadeOk);
+    feedback(selectGenero, "erro-pf-genero", generoOk);
+    feedback(inputSenha, "erro-pf-senha", senhasResult.tamanhoOk);
+    feedback(inputConfirma, "erro-pf-senha-confirma", senhasResult.iguais);
+
+    // Visual para Checkboxes (como não é um input único, focamos no span)
+    if (musicaOk) spanMusica.classList.remove("destaque-erro");
+    else spanMusica.classList.add("destaque-erro");
+
+    if (loginOk && idadeOk && generoOk && musicaOk && senhasResult.tamanhoOk && senhasResult.iguais) {
+        alert("Desenvolvedor cadastrado com sucesso! 🚀");
+        formPF.reset();
+        // Limpar classes de sucesso
+        document.querySelectorAll('#form-cadastro-pf .campo-validado').forEach(el => el.classList.remove('campo-validado'));
+    }
+});
+// #endregion
+// #endregion
 
 // #region Extras
 
@@ -641,15 +852,7 @@ const btnReduzir = document.getElementById("btn-reduzir-nav");
 const appContainer = document.querySelector(".app-container");
 
 btnReduzir.addEventListener("click", function () {
-    // Alterna a classe que reduz o grid
     appContainer.classList.toggle("reduzido");
-
-    // Troca o ícone da setinha
-    if (appContainer.classList.contains("reduzido")) {
-        btnReduzir.innerHTML = "&gt;"; // Seta para direita
-    } else {
-        btnReduzir.innerHTML = "&lt;"; // Seta para esquerda
-    }
 });
 //#endregion
 

@@ -88,10 +88,8 @@ button {
 /* #endregion */
 
 /* #region 2. nav */
-/* Estruturas gerais de estilo. Não fazem parte dos requisitos do AT */
 
-
-/* --- SIDEBAR GERAL --- */
+/* #region 2.1 nav extendida */
 .sidebar {
     background-color: #0d0d0d;
     color: white;
@@ -101,31 +99,32 @@ button {
     white-space: nowrap;
     transition: padding 0.3s ease;
 }
-
-/* --- HEADER DA SIDEBAR (LOGO + BOTÃO) --- */
-.logo-sidebar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #222;
-
-
-}
-
 .logo-wrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
+    align-content: space-evenly;
+    padding: 10px;
     gap: 10px;
     font-size: 1.1rem;
     font-weight: bold;
-    color: #fff;
 }
 
-.icone-logo {
+.sidebar header{
+    border-bottom: 1px solid #211f1f;
+    padding: 5px;
+}
+
+#icone-toggle{
+    font-size: 0.7rem;
+
+}
+.texto-logo{
     color: var(--cor-primaria);
-    font-size: 28px;
+    padding: 0px 10px;
+    text-align: center;
+    align-items: center;
+
 }
 
 #btn-reduzir-nav {
@@ -135,7 +134,7 @@ button {
     border-radius: 4px;
     padding: 4px 8px;
     cursor: pointer;
-    font-size: 1rem;
+    align-items: center;
     transition: 0.2s;
 }
 
@@ -146,9 +145,9 @@ button {
 
 }
 
-/* --- LINKS DE NAVEGAÇÃO --- */
 .sidebar ul {
     list-style: none;
+    margin-top: 20px;
 }
 
 .sidebar a {
@@ -176,45 +175,44 @@ button {
 .material-symbols-outlined {
     font-size: 20px;
 }
+/* #endregion */
 
 
-/* ==================
-    SIDEBAR REDUZIDA
-   ================== */
+/* #region 2.2 sidebar reduzida */
 
-/* 1. Tira o padding lateral da sidebar para sobrar espaço */
 .app-container.reduzido .sidebar {
     padding: 20px 0;
 }
 
-/* 2. Muda o Header para empilhar o ícone e o botão */
 .app-container.reduzido .logo-sidebar {
     flex-direction: column;
     gap: 20px;
 }
+.app-container.reduzido .sidebar header{
+    border-bottom: none;
+}
 
-/* 3. Centraliza a div do ícone da logo */
 .app-container.reduzido .logo-wrapper {
     justify-content: center;
     width: 100%;
 }
 
-/* 4. Esconde os textos da logo e dos links */
 .app-container.reduzido .sidebar .texto-logo,
 .app-container.reduzido .sidebar .texto-link {
     display: none;
 }
 
-/* 5. Centraliza os ícones do menu perfeitamente */
 .app-container.reduzido .sidebar a {
     justify-content: center;
     padding-left: 0;
     padding-right: 0;
+
 }
 
-/* 6. Deixa uma cor de fundo mais clara que o link ativo 
-    para diferenciar a seleção (a mesma ideia foi aplicada
-    no container não reduzido */
+.app-container.reduzido .sidebar ul{
+    margin-top: none;
+}
+
 .app-container.reduzido .sidebar a:hover {
     color: #e8f6ed;
     background-color: rgba(178, 188, 182, 0.1);
@@ -224,6 +222,7 @@ button {
     background-color: transparent;
     color: var(--cor-primaria);
 }
+/* #endregion */
 
 /* #endregion */
 
@@ -323,14 +322,6 @@ button {
     grid-row: 1.5 / span 1;
  
 }
-
-
-
-
-
-
-
-
 
 /* #endregion */
 
@@ -1077,37 +1068,35 @@ textarea:focus{
 
 /* #region 3.6 CADASTROS */
 
+/* #region logica de toggle */
 
 .toggle-cadastro {
     display: flex;
     flex-direction: row;
     position: relative;
-    z-index: 10; /* Garante que as abas fiquem por cima da caixa */
+    z-index: 10; 
 }
 
 .toggle-cadastro h3{
     text-transform: uppercase;
 }
 
-/* Base das abas */
 .cadastro-pj, .cadastro-pf {
     position: relative;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-/* Sobreposição lateral */
 .cadastro-pf {
     margin-left: -15px; 
 }
 
-/* Estilo do H3 dentro das abas */
 .toggle-cadastro h3 {
     padding: 12px 25px;
     font-size: 14px;
     font-weight: 600;
-    border: 1px solid #333; /* Borda padrão escura */
-    border-bottom: 1px solid var(--cor-primaria); /* Fecha a caixa se inativo */
+    border: 1px solid #333;
+    border-bottom: 1px solid var(--cor-primaria); 
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     background-color: #111;
@@ -1117,38 +1106,37 @@ textarea:focus{
     transition: all 0.2s ease;
 }
 
-/* --- ESTADO ATIVO --- */
 .toggle-cadastro .active {
-    z-index: 20; /* Fica no topo da pilha */
+    z-index: 20; 
 }
 
 .toggle-cadastro .active h3 {
-    background-color: #1a1a1a; /* Mesma cor do fundo do formulário */
+    background-color: #1a1a1a; 
     color: white;
     border-color: var(--cor-primaria);
-    /* O SEGREDO: A borda de baixo "some" para fundir com a caixa */
     border-bottom: 1px solid #1a1a1a !important; 
-    padding-bottom: 13px; /* Compensa o 1px da borda que sumiu */
+    padding-bottom: 13px; 
+
+    position: relative;
+    z-index: 15;
+    margin-bottom: -1px;
 }
 
-/* --- ESTADO INATIVO --- */
 .toggle-cadastro div:not(.active) h3:hover {
     color: #ccc;
     background-color: #151515;
 }
 
-/* --- CONTAINER DO FORMULÁRIO --- */
 .cadastro-form-container {
     background-color: #1a1a1a;
     border: 1px solid var(--cor-primaria);
     border-radius: 0 16px 16px 16px;
     padding: 30px;
-    margin-top: -1px; /* Sobe 1px para a aba ativa cobrir a linha verde */
+    margin-top: -1px; 
     position: relative;
     z-index: 5;
 }
 
-/* Controle de exibição do conteúdo */
 .tab-content {
     display: none;
     animation: fadeIn 0.3s ease;
@@ -1165,9 +1153,12 @@ textarea:focus{
 
 /* #endregion */
 
+
+
 /* #region 3.6.1 formularios */
 
-#select-cadastro-pj-atuacao{
+
+.select-cadastro, #select-genero-user{
     background-color: #1a1a1a;
     color: white;
     border: 1px solid #333;
@@ -1227,10 +1218,27 @@ textarea:focus{
     flex-direction: column;
 }
 
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 5px 0px 0px 0px;
+    color: white;
+}
+
+.checkbox-group label {
+    font-weight: normal !important;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#btn-cadastrar-pf{
+    grid-column: span 2;
+}
 
 /* #endregion */
 
-
+/* #endregion */
 
 
 /* #region extra */
@@ -1295,7 +1303,7 @@ textarea:focus{
 /* #endregion */
 
 /* #region RESPONSIVIDADE (revisar) */
-@media (max-width: 1366px) {
+@media (max-width: 1366px){
 
     html,
     body {
@@ -1323,21 +1331,33 @@ textarea:focus{
         left: 0;
     }
 
-    #btn-reduzir-nav {
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        z-index: 10000;
-        width: 45px;
-        height: 45px;
-        border-radius: 8px;
-        background-color: var(--cor-primaria);
-        color: #000;
+    #titulo-painel{
+        margin-top: -50px;
+        padding-left: 60px;
+    }
+
+    
+
+    header{
         display: flex;
         align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
+
+
+    
+
+    #btn-reduzir-nav{
+        position: fixed;
+        top: 35px;
+        left: 200px;
+    }
+
+
+    .app-container.reduzido #btn-reduzir-nav{
+        top: 28px;
+        left: 25px;
+    } 
+
 
     main {
         width: 100% !important;
@@ -1358,6 +1378,7 @@ textarea:focus{
         height: auto !important;
         min-height: 250px;
     }
+
 }
 
 /* #endregion */
