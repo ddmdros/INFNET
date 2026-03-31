@@ -244,10 +244,10 @@
                         <header>
                             <div class="toggle-cadastro">
                                 <div class="cadastro-pj tab-A active" data-target="conteudo-pj">
-                                    <h3>Cliente corporativo</h3>
+                                    <h3>Cadastro PJ</h3>
                                 </div>
                                 <div class="cadastro-pf tab-B" data-target="conteudo-pf">
-                                    <h3>Desenvolvedor parceiro</h3>
+                                    <h3>Cadastro PF</h3>
                                 </div>
                             </div>
                         </header>
@@ -255,16 +255,15 @@
                         <div class="cadastro-form-container">
 
                             <div id="conteudo-pj" class="tab-content active">
-                                <h3>Cadastro de Empresa (CNPJ)</h3>
-
                                 <div class="formularios-cadastro">
                                     <form method="POST" id="form-cadastro-pj" class="formulario-wrapper" novalidate>
 
                                         <div class="wrapper-form">
                                             <label for="pj-nome">Nome da Empresa</label>
                                             <input type="text" class="input-list" name="nome" id="pj-nome"
-                                                placeholder="Ex: Tech Solutions SA">
-                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-nome">
+                                                placeholder="Ex: Minha Empresa SA" required>
+                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-nome"><span
+                                                    class="hashtag-erro">*</span>
                                                 Mínimo de 4 caracteres, deve conter a sigla "SA"
                                             </span>
                                         </div>
@@ -272,7 +271,8 @@
                                         <div class="wrapper-form">
                                             <label for="pj-data">Data Fundação</label>
                                             <input type="date" class="input-list" name="data-fundacao" id="pj-data">
-                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-data">
+                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-data"
+                                                required><span class="hashtag-erro">*</span>
                                                 Data posterior a 01/01/2000
                                             </span>
                                         </div>
@@ -280,21 +280,24 @@
                                         <div class="wrapper-form">
                                             <label for="pj-email">Email Corporativo</label>
                                             <input type="email" class="input-list" name="email" id="pj-email"
-                                                placeholder="contato@empresa.com">
-                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-email">
+                                                placeholder="contato@empresa.com" required>
+                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-email"><span
+                                                    class="hashtag-erro">*</span>
                                                 Deve conter "@" e "." (com "@" antes do ponto)
                                             </span>
                                         </div>
 
                                         <div class="wrapper-form">
                                             <label for="pj-atuacao">Atuação</label>
-                                            <select name="atuacao" id="pj-atuacao" class="select-cadastro">
-                                                <option value="">--Selecione uma opção--</option>
+                                            <select name="atuacao" id="pj-atuacao" class="select-cadastro" required>
+                                                <option value="" id="atuacao-null" disabled selected>Selecione uma opção
+                                                </option>
                                                 <option value="vendas">Vendas</option>
                                                 <option value="marketing">Marketing</option>
                                                 <option value="aplicativos">Aplicativos</option>
                                             </select>
-                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-atuacao">
+                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-atuacao"><span
+                                                    class="hashtag-erro">*</span>
                                                 Selecione uma das opções acima
                                             </span>
                                         </div>
@@ -302,9 +305,10 @@
                                         <div class="wrapper-form" id="cadastro-pj-descricao-area">
                                             <label for="pj-descricao">Descrição da Empresa</label>
                                             <textarea id="pj-descricao" name="descricao"
-                                                placeholder="Conte um pouco sobre o negócio..."
-                                                maxlength="100"></textarea>
-                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-descricao">
+                                                placeholder="Conte um pouco sobre o negócio..." maxlength="100"
+                                                required></textarea>
+                                            <span class="regras-negocio-labels-cadastro" id="erro-pj-descricao"><span
+                                                    class="hashtag-erro">*</span>
                                                 Máximo de 50 caracteres
                                             </span>
                                         </div>
@@ -320,28 +324,32 @@
                                 <form method="GET" id="form-cadastro-pf" class="formulario-wrapper" novalidate>
 
                                     <div class="wrapper-form">
-                                        <label for="user-login">Login</label>
+                                        <label for="pf-login">Login</label>
                                         <input type="text" class="input-list" name="user-login" placeholder="Login"
-                                            id="user-login">
-                                        <span class="regras-negocio-labels-cadastro">Máximo de 8 caracteres</span>
+                                            id="pf-login" required>
+                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-login"><span
+                                                class="hashtag-erro">*</span>Máximo de 8 caracteres</span>
                                     </div>
 
                                     <div class="wrapper-form">
-                                        <label for="idade-user">Idade</label>
-                                        <input type="number" class="input-list" name="idade-user" placeholder="Idade">
-                                        <span class="regras-negocio-labels-cadastro">Maior que 12 anos</span>
+                                        <label for="pf-idade">Idade</label>
+                                        <input type="number" class="input-list" name="pf-idade" id="pf-idade"
+                                            placeholder="Idade" required>
+                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-idade"><span
+                                                class="hashtag-erro">*</span>Maior que 12 anos</span>
                                     </div>
 
                                     <div class="wrapper-form">
-                                        <label for="genero-user">Gênero</label>
-                                        <select name="selecao-genero" id="select-genero-user">
-                                            <option value="">--Selecione uma opção--</option>
+                                        <label for="pf-genero">Gênero</label>
+                                        <select name="selecao-genero" id="pf-genero" class="select-cadastro" required>
+                                            <option value="" disabled selected>Selecione uma opção</option>
                                             <option value="masculino">Masculino</option>
                                             <option value="feminino">Feminino</option>
                                             <option value="nao-binario">Não binário</option>
                                             <option value="outros">Outros/Prefiro não informar</option>
-
                                         </select>
+                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-genero"><span
+                                                class="hashtag-erro">*</span>Selecione uma opção</span>
                                     </div>
 
                                     <div class="wrapper-form">
@@ -352,14 +360,16 @@
                                             <label><input type="checkbox" name="musica" value="funk"> Funk</label>
                                             <label><input type="checkbox" name="musica" value="pop"> Pop</label>
                                         </div>
-                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-musica">Selecione pelo
+                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-musica"><span
+                                                class="hashtag-erro">*</span>Selecione pelo
                                             menos 2 opções</span>
                                     </div>
 
                                     <div class="wrapper-form">
                                         <label for="pf-senha">Senha</label>
                                         <input type="password" class="input-list" id="pf-senha" placeholder="Senha">
-                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-senha">Entre 4 e 10
+                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-senha"><span
+                                                class="hashtag-erro">*</span>Entre 4 e 10
                                             caracteres</span>
                                     </div>
 
@@ -367,7 +377,8 @@
                                         <label for="pf-senha-confirma">Confirmar Senha</label>
                                         <input type="password" class="input-list" id="pf-senha-confirma"
                                             placeholder="Repita a senha">
-                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-senha-confirma">As
+                                        <span class="regras-negocio-labels-cadastro" id="erro-pf-senha-confirma"><span
+                                                class="hashtag-erro">*</span>As
                                             senhas devem ser iguais</span>
                                     </div>
 
@@ -377,13 +388,42 @@
                         </div>
                     </div>
 
-    </div>
-    </section>
 
+                </section>
 
-    </section>
+                <section class="card-form-whatsapp">
+                    <h3>Cobrança via WhatsApp</h3>
+                    <form id="form-whatsapp" class="formulario-wrapper" novalidate>
+    
+                            <div class="wrapper-form">
+                                <label for="wa-telefone">Telefone do cliente</label>
+                                <input type="tel" class="input-list" id="wa-telefone" placeholder="(00) 00000-0000"
+                                    required>
+                                <span class="regras-negocio-labels-cadastro" id="erro-wa-telefone">
+                                    <span class="hashtag-erro">*</span>Informe um número válido com DDD
+                                </span>
+                            </div>
+    
+                            <div class="wrapper-form" style="grid-column: span 2;">
+                                <label for="wa-mensagem">Mensagem de cobrança</label>
+                                <textarea id="wa-mensagem" class="input-list"
+                                    placeholder="Olá, notamos um pendência..." style="resize: none; height: 80px;"
+                                    required></textarea>
+                                <span class="regras-negocio-labels-cadastro" id="erro-wa-mensagem">
+                                    <span class="hashtag-erro">*</span>A mensagem não pode estar vazia
+                                </span>
+                            </div>
+    
+                            <button type="submit" id="btn-enviar-wa" style="grid-column: span 2;">
+                                Enviar Cobrança
+                            </button>
+                        </form>
+                </section>
+            
 
-    </main>
+            </section>
+
+        </main>
     </div>
 
     <script src="script.js"></script>

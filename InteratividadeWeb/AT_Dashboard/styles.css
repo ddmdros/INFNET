@@ -1,4 +1,4 @@
-/* #region 1. Configurações gerais */
+/* #region 1. configurações estruturais */
 /* Usei um grid container com aside para definir 
 que o menu de navegação ocupa 240px e o main 1fr (o resto da tela) 
 Coloquei algumas referencias visuais do projeto aqui:
@@ -99,6 +99,7 @@ button {
     white-space: nowrap;
     transition: padding 0.3s ease;
 }
+
 .logo-wrapper {
     display: flex;
     align-items: center;
@@ -113,10 +114,11 @@ button {
 .sidebar header{
     border-bottom: 1px solid #211f1f;
     padding: 5px;
+    margin-top: -13px;
 }
 
 #icone-toggle{
-    font-size: 0.7rem;
+    font-size: 0.9rem;
 
 }
 .texto-logo{
@@ -132,7 +134,7 @@ button {
     color: #888;
     border: 1px solid #333;
     border-radius: 4px;
-    padding: 4px 8px;
+    padding: 3px 4px;
     cursor: pointer;
     align-items: center;
     transition: 0.2s;
@@ -142,7 +144,6 @@ button {
     background-color: #222;
     color: var(--cor-primaria);
     border-color: var(--cor-primaria);
-
 }
 
 .sidebar ul {
@@ -177,13 +178,20 @@ button {
 }
 /* #endregion */
 
-
 /* #region 2.2 sidebar reduzida */
 
 .app-container.reduzido .sidebar {
     padding: 20px 0;
 }
 
+.app-container.reduzido header{
+    margin-left: 4px; 
+    /* consertando consequências de maneira nada profissional.... */
+}
+
+.app-container.reduzido #titulo-painel{
+    margin-left: -1px;
+}
 .app-container.reduzido .logo-sidebar {
     flex-direction: column;
     gap: 20px;
@@ -226,8 +234,7 @@ button {
 
 /* #endregion */
 
-
-/* #region 3. Configurações gerais dos cards do dashboard */
+/* #region 3. configurações gerais dos cards do dashboard */
 
 .card-info-usuario {
     grid-column: 1 / span 4;
@@ -293,7 +300,6 @@ button {
     border: 1px solid #282828;
     border-radius: 16px;
     padding: 20px;
-    /* height: 300px; */
     color: white;
     display: flex;
     flex-direction: column;
@@ -323,10 +329,33 @@ button {
  
 }
 
+.card-form-whatsapp{
+    background: #1a1a1a;
+    border: 1px solid #282828;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    grid-column: 1 / span 4;
+    grid-row: 4;
+}
+
+.card-form-whatsapp h3, .card-form-whatsapp label{
+    color: white;
+}
+.card-form-whatsapp input, .card-form-whatsapp textarea{
+    margin-top: 10px;
+}
+#form-whatsapp{
+    margin-top: 10px;
+}
+
 /* #endregion */
 
 
-/* #region 3.1 card 1 - CARD USUARIO */
+/* #region CARD USUARIO */
 
 .perfil-header {
     display: flex;
@@ -338,6 +367,7 @@ button {
     width: 70px;
     height: 70px;
     flex-shrink: 0;
+    margin-right: 10px;
 }
 
 #foto-perfil {
@@ -446,7 +476,7 @@ button {
     flex-wrap: wrap;
     gap: 8px;
     list-style: none;
-    margin-bottom: 24px;
+    margin-bottom: 5px;
     align-content: flex-start;
 }
 
@@ -494,7 +524,6 @@ button {
 }
 
 
-
 .input-list {
     flex: 1;
     min-width: 0;
@@ -520,12 +549,13 @@ textarea{
 }
 
 .input-list:focus {
-    border-color: white;
+    outline: none;
+    border-color: #ffffff !important;
+    background-color: #1f1f1f;
 }
 
 textarea:focus{
     border-color: white;
-
 }
 
 #btn-inserir-skill {
@@ -542,7 +572,7 @@ textarea:focus{
 
 #btn-inserir-skill:hover {
     background-color: var(--cor-hover-btn);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     transition: 0.2s;
 }
 
@@ -560,25 +590,107 @@ textarea:focus{
 #btn-remover-ultima-skill:hover {
     background: rgba(239, 68, 68, 0.1);
     border-color: var(--cor-secundaria);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     transition: 0.2s;
 }
 
 #lista-skills li:hover {
     background: rgba(74, 222, 128, 0.2);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     transition: 0.2s;
     cursor: default;
 }
 
 .user-name-text {
     color: #ffffff !important;
-    /* Ignora heranças cinzas */
 }
 
 /* #endregion 3. primeiro card */
 
-/* #region 3.2 card 2 - POST INTERATIVO*/
+/* #region TASK LIST */
+.active-task-list {
+    background-color: #222;
+    height: 100%;
+    margin-top: 25px;
+    border-radius: 15px;
+    overflow: auto;
+}
+
+.card-task-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-element {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 15px;
+    border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+    align-items: center;
+    padding: 10px;
+    background-color: #2d2d2d;
+}
+
+.task-element:last-child {
+    border-bottom: none;
+}
+
+.task-element p {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.btn-remove-task {
+    width: 26px;  
+    height: 26px; 
+    background: var(--cor-secundaria);
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--cor-secundaria);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.task-element:hover{
+    background-color: rgb(98, 94, 94);
+    border-radius: 8px;
+}
+
+.btn-remove-task:hover {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+}
+
+.active-task-list::-webkit-scrollbar {
+    width: 6px; 
+}
+
+.active-task-list::-webkit-scrollbar-track {
+    background: #1a1a1a; 
+    border-radius: 10px;
+    margin: 10px 0; 
+}
+
+.active-task-list::-webkit-scrollbar-thumb {
+    background: #333; 
+    border-radius: 10px;
+}
+
+
+.active-task-list::-webkit-scrollbar-thumb:hover {
+    background: #4ade80; 
+}
+
+/* #endregion */
+
+/* #region POST INTERATIVO*/
 
 .social-media-container {
     border: 1px solid var(--cor-primaria);
@@ -591,17 +703,44 @@ textarea:focus{
     flex: 1;
     min-height: 0;
 }
+.destaque-sucesso{
+    visibility: hidden;
+}
+
+.destaque-erro {
+    visibility: visible !important;
+    color: #dc3545 !important;
+}
+
+.hashtag-erro{
+    color: var(--cor-secundaria);
+}
+#pf-idade, #pf-senha, #pf-senha-confirma{
+    border-radius: 10px;
+}
+.input-list:focus, .select-cadastro:focus {
+    outline: none;
+    border-color: #ffffff !important;
+}
+
+#pj-descricao{
+    resize: none;
+}
 .campo-validado{
-    border-color: var(--cor-primaria);
+    border-color: var(--cor-primaria) !important;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.2);
+    border-radius: 10px;
+    outline: none;
 }
 
 .campo-invalido{
-    border-color: var(--cor-secundaria);
+    border: 1px solid #dc3545 !important;
 }
+
 
 .regras-negocio-labels-cadastro.destaque-erro {
     color: white;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 #coracao-feedback {
@@ -655,7 +794,6 @@ textarea:focus{
 
 #bookmark-txt {
     color: white;
-    /* color: var(--cor-primaria); */
     padding: 0px 5px 0px 5px;
 
 }
@@ -841,13 +979,232 @@ textarea:focus{
 }
 
 #btn-toggle-comentarios:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     opacity: 0.8;
 }
 
 /* #endregion */
 
-/* #region 3.3. card 3 CARD DEPOIMENTO */
+/* #region CADASTROS */
+
+/* #region logica de toggle */
+
+.toggle-cadastro {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: 10; 
+}
+
+.toggle-cadastro h3{
+    text-transform: uppercase;
+}
+
+.cadastro-pj, .cadastro-pf {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cadastro-pf{
+    margin-left: -1px;
+}
+
+
+.toggle-cadastro h3 {
+    padding: 5px 25px 5px 25px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid #333;
+    /* border-bottom: 1px solid var(--cor-primaria);  */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-color: #111;
+    color: #888;
+    white-space: nowrap;
+    margin: 0;
+    transition: all 0.2s ease;
+    padding-top: 15px;
+    border-bottom-color: transparent;
+
+}
+.app-container.reduzido .toggle-cadastro h3{
+    margin-left: -4px;
+}
+.toggle-cadastro .active {
+    z-index: 20; 
+}
+
+.toggle-cadastro .active h3 {
+    background-color: #1a1a1a; 
+    color: white;
+    box-shadow: 10px 0px 10px #111;
+
+    border-color:#222;
+    border-bottom: 1px solid #1a1a1a !important; 
+    padding-bottom: 6px; 
+    position: relative;
+    z-index: 20;
+    padding-bottom: 8px;
+}
+
+.toggle-cadastro {
+    border-bottom-color: transparent;
+}
+.toggle-cadastro div:not(.active) h3:hover {
+    color: #ccc;
+    background-color: #151515;
+}
+
+.cadastro-form-container {
+    background-color: #1a1a1a;
+    /* border: 1px solid var(--cor-primaria); */
+    border: 1px solid #111;
+    box-shadow: 5px 5px 5px 5px #111;
+    border-radius: 0 16px 16px 16px;
+    padding: 30px;
+    margin-top: -1px; 
+    position: relative;
+    z-index: 5;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+
+/* #endregion */
+
+/* #region 3.6.1 formularios */
+
+.select-cadastro, #select-genero-user{
+    background-color: #1a1a1a;
+    color: white;
+    border: 1px solid #333;
+    padding: 10px;
+
+}
+
+.formularios-cadastro{
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+#cadastro-pj-descricao-area{
+    grid-column: span 2;
+}
+
+#btn-cadastrar-empresa{
+    grid-column: span 2;
+}
+
+#btn-cadastrar-empresa:hover{
+    background-color: var(--cor-hover-btn);
+    transform: translateY(-1px);
+}
+
+.formularios-cadastro h3{
+    text-transform: uppercase;
+}
+
+.regras-negocio-labels-cadastro{
+    visibility:hidden;
+    font-size: 12px;
+    margin-top: 5px;
+    color: rgb(177, 173, 173);
+
+}
+
+.inactive-general{
+    display: none;
+}
+
+.active-general{
+    display: block;
+}
+
+.formularios-cadastro label{
+    padding: 0px 0px 10px 0px;
+    font-weight: bold;
+}
+
+.wrapper-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 5px 0px 0px 0px;
+    color: white;
+}
+
+.checkbox-group label {
+    font-weight: normal !important;
+    font-size: 14px;
+    cursor: pointer;
+
+}
+
+#btn-cadastrar-pf{
+    grid-column: span 2;
+}
+
+#btn-cadastrar-pf:hover{
+    background-color: var(--cor-hover-btn);
+    transform: translateY(-1px);
+}
+
+
+#pj-data::-webkit-calendar-picker-indicator{
+    filter: invert(1);
+}
+
+#pj-data::-webkit-datetime-edit {
+    color: #888; 
+    padding-left: 10px;
+}
+
+.select-cadastro:invalid {
+    color: #888; 
+}
+
+.select-cadastro option {
+    color: #ffffff;
+    background-color: #1a1a1a;
+}
+
+
+.select-cadastro:not(:invalid) {
+    color: #ffffff;
+}
+
+#pj-atuacao{
+    border-radius: 10px;
+}
+
+#pf-genero{
+    border-radius: 10px;;
+}
+
+/* #endregion */
+
+/* #endregion */
+
+/* #region CARD DEPOIMENTO */
 
 
 #btn-gerar-depoimento {
@@ -872,13 +1229,13 @@ textarea:focus{
     background: #c4cac6;
     color: #666;
     cursor: not-allowed;
-    transform: translateY(0px);
+    transform: translateY(-1px);
 
 }
 
 #btn-gerar-depoimento:hover {
     background-color: var(--cor-hover-btn);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     transition: 0.2s;
 }
 
@@ -929,7 +1286,7 @@ textarea:focus{
 
 /* #endregion */
 
-/* #region 3.4 CARDS VISUALIZAÇÃO E DEPLOY */
+/* #region VISUALIZAÇÃO E DEPLOY */
 
 .visualizacao-wrapper {
     flex-grow: 1;
@@ -960,8 +1317,7 @@ textarea:focus{
 
 #btn-ver-perfil-publico:hover {
     background-color: var(--cor-hover-btn);
-    transform: translateY(-2px);
-    transition: 0.2s;
+    transform: translateY(-1px);
 }
 
 #btn-ver-perfil-publico,
@@ -974,7 +1330,7 @@ textarea:focus{
 }
 
 #btn-deploy:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     transition: 0.2s;
 }
 
@@ -982,265 +1338,22 @@ textarea:focus{
 
 /* #endregion  */
 
-/* #region 3.5 TASK LIST */
-.active-task-list {
-    background-color: #222;
-    height: 100%;
-    margin-top: 25px;
-    border-radius: 15px;
-    overflow: auto;
-}
-
-.card-task-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.task-element {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 15px;
-    border-bottom: 1px solid rgba(74, 222, 128, 0.2);
-    align-items: center;
-    padding: 10px;
-    background-color: #2d2d2d;
-}
-
-.task-element:last-child {
-    border-bottom: none;
-}
-
-.task-element p {
-    color: #e0e0e0;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
-.btn-remove-task {
-    width: 26px;  
-    height: 26px; 
-    background: var(--cor-secundaria);
-    color: white;
-
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    background-color: var(--cor-secundaria);
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.2s;
-}
-
-.task-element:hover{
-    background-color: rgb(98, 94, 94);
-    border-radius: 8px;
-}
-
-.btn-remove-task:hover {
-    transform: scale(1.05);
-    filter: brightness(0.9);
-}
-
-.active-task-list::-webkit-scrollbar {
-    width: 6px; 
-}
-
-.active-task-list::-webkit-scrollbar-track {
-    background: #1a1a1a; 
-    border-radius: 10px;
-    margin: 10px 0; 
-}
-
-.active-task-list::-webkit-scrollbar-thumb {
-    background: #333; 
-    border-radius: 10px;
-}
-
-
-.active-task-list::-webkit-scrollbar-thumb:hover {
-    background: #4ade80; 
-}
-
-/* #endregion */
-
-
-/* #region 3.6 CADASTROS */
-
-/* #region logica de toggle */
-
-.toggle-cadastro {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    z-index: 10; 
-}
-
-.toggle-cadastro h3{
-    text-transform: uppercase;
-}
-
-.cadastro-pj, .cadastro-pf {
-    position: relative;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.cadastro-pf {
-    margin-left: -15px; 
-}
-
-.toggle-cadastro h3 {
-    padding: 12px 25px;
-    font-size: 14px;
-    font-weight: 600;
-    border: 1px solid #333;
-    border-bottom: 1px solid var(--cor-primaria); 
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    background-color: #111;
-    color: #888;
-    white-space: nowrap;
-    margin: 0;
-    transition: all 0.2s ease;
-}
-
-.toggle-cadastro .active {
-    z-index: 20; 
-}
-
-.toggle-cadastro .active h3 {
-    background-color: #1a1a1a; 
-    color: white;
-    border-color: var(--cor-primaria);
-    border-bottom: 1px solid #1a1a1a !important; 
-    padding-bottom: 13px; 
-
-    position: relative;
-    z-index: 15;
-    margin-bottom: -1px;
-}
-
-.toggle-cadastro div:not(.active) h3:hover {
-    color: #ccc;
-    background-color: #151515;
-}
-
-.cadastro-form-container {
-    background-color: #1a1a1a;
-    border: 1px solid var(--cor-primaria);
-    border-radius: 0 16px 16px 16px;
-    padding: 30px;
-    margin-top: -1px; 
-    position: relative;
-    z-index: 5;
-}
-
-.tab-content {
-    display: none;
-    animation: fadeIn 0.3s ease;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* #endregion */
-
-
-
-/* #region 3.6.1 formularios */
-
-
-.select-cadastro, #select-genero-user{
-    background-color: #1a1a1a;
-    color: white;
-    border: 1px solid #333;
-    padding: 10px 10px 10px 0px;
-
-}
-
-.formularios-cadastro{
-    padding: 20px 10px 10px 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.formulario-wrapper{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-#cadastro-pj-descricao-area{
-    grid-column: span 2;
-}
-
-#btn-cadastrar-empresa{
-    
-    grid-column: span 2;
-}
-.formularios-cadastro h3{
-    /* margin-top: -15px; */
-    /* margin-bottom: 10px; */
-    text-transform: uppercase;
-    /* margin: 205px 0px 0px 0px; */
-
-
-}
-.regras-negocio-labels-cadastro{
-    margin: 5px 0px 10px 0px;
-    font-size: 12px;
-    color:#8a8686
-}
-
-.inactive-general{
-    display: none;
-}
-
-.active-general{
-    display: block;
-}
-
-.formularios-cadastro label{
-    padding: 0px 0px 10px 0px;
+/* #region API */
+#btn-enviar-wa {
+    background-color: var(--cor-primaria); 
+    color: #000;
     font-weight: bold;
-
-}
-
-.wrapper-form{
-    display: flex;
-    flex-direction: column;
-}
-
-.checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 5px 0px 0px 0px;
-    color: white;
-}
-
-.checkbox-group label {
-    font-weight: normal !important;
-    font-size: 14px;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
-#btn-cadastrar-pf{
-    grid-column: span 2;
+#btn-enviar-wa:hover {
+    background-color: var(--cor-hover-btn);
+    transform: translateY(-1px);
 }
-
 /* #endregion */
-
-/* #endregion */
-
-
 /* #region extra */
 .duck-mode {
     --cor-pato: #f39c12;
@@ -1302,7 +1415,9 @@ textarea:focus{
 
 /* #endregion */
 
-/* #region RESPONSIVIDADE (revisar) */
+/* #region RESPONSIVIDADE  */
+
+/* podia ser bem mais granular, mas já me passei nesse AT, então simplifiquei :P */
 @media (max-width: 1366px){
 
     html,
@@ -1319,7 +1434,6 @@ textarea:focus{
         position: fixed;
         top: 0;
         left: -280px;
-        /* Joga a barra para fora da tela */
         width: 260px !important;
         height: 100vh;
         z-index: 9999;
@@ -1333,31 +1447,29 @@ textarea:focus{
 
     #titulo-painel{
         margin-top: -50px;
-        padding-left: 60px;
+        padding-left: 70px;
     }
-
-    
-
+  
     header{
         display: flex;
         align-items: center;
-    }
-
-
+    }  
     
-
+    .logo-wrapper{
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    
     #btn-reduzir-nav{
         position: fixed;
-        top: 35px;
+        top: 29px;
         left: 200px;
     }
 
-
     .app-container.reduzido #btn-reduzir-nav{
-        top: 28px;
+        top: 29px;
         left: 25px;
     } 
-
 
     main {
         width: 100% !important;
@@ -1373,7 +1485,6 @@ textarea:focus{
     .dashboard-grid>div,
     .dashboard-grid>section {
         grid-column: 1 / -1 !important;
-        /* Ignora as regras do desktop */
         grid-row: auto !important;
         height: auto !important;
         min-height: 250px;

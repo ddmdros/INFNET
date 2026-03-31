@@ -1,6 +1,3 @@
-// #region MODULO 1 (1-4)
-
-
 //#region 1. OBJETO LITERAL (exercício 1)
 const Freelancer = {
     nome: "Diogo Medeiros",
@@ -54,6 +51,26 @@ descricaoHeader.style.backgroundColor = "#1a1a1a";
 let primeiroP = document.querySelector("p");
 primeiroP.innerText += "Bem-vindo ao sistema";
 
+// sobrescrevi a mensagem também:
+
+function atualizarSaudacao() {
+    const saudacaoElemento = document.getElementById('mensagem-boas-vindas');
+    const horaAtual = new Date().getHours();
+    let saudacao = "";
+
+    if (horaAtual >= 5 && horaAtual < 12) {
+        saudacao = "Bom dia,";
+    } else if (horaAtual >= 12 && horaAtual < 18) {
+        saudacao = "Boa tarde,";
+    } else {
+        saudacao = "Boa noite,";
+    }
+
+    saudacaoElemento.textContent = saudacao;
+}
+
+atualizarSaudacao();
+
 // #endregion
 
 // #region 4. SIDEBAR (exercício 4)
@@ -78,9 +95,6 @@ novoItemLi.innerHTML = `
 listaMenu.appendChild(novoItemLi);
 // #endregion
 
-// #endregion MODULO 1
-
-// #region MODULO 2 (5-8)
 // #region 5. GESTÃO DE AVATAR (exercício 5)
 
 // fiz um easter egg para cumprir esse requisito
@@ -100,7 +114,7 @@ inputUpload.addEventListener("change", function (event) {
         const leitor = new FileReader();
 
         leitor.onload = function (e) {
-            const novaFoto = e.target.result; // A variável nasce aqui
+            const novaFoto = e.target.result;
             fotoPerfil.src = novaFoto;
             
             // Requisitos do exercício
@@ -108,7 +122,6 @@ inputUpload.addEventListener("change", function (event) {
             fotoPerfil.setAttribute("title", "Usuário Verificado manualmente");
             fotoPerfil.style.borderColor = "#8bec7d";
 
-            // ATUALIZA OS COMENTÁRIOS AQUI DENTRO:
             atualizarFotosDosComentarios(novaFoto); 
             console.log("Foto de perfil carregada pelo usuário com sucesso 🖼️");
         };
@@ -126,19 +139,16 @@ musicaPato.volume = 1.0;
 const somQuackCurto = new Audio('https://www.myinstants.com/media/sounds/quack.mp3');
 
 
-// Função para ativar o Easter Egg do Pato
+// Easter Egg do Pato
 function ativarEasterEggPato() {
     const linkPato = "https://img.freepik.com/vetores-gratis/pato-com-personagem-de-desenho-animado-de-cabeca-verde_1308-96950.jpg?semt=ais_hybrid&w=740&q=80";
     
     document.body.classList.add("duck-mode");
-    // ... resto do seu código de áudio ...
 
     fotoPerfil.src = linkPato;
-    // ... resto do seu código de texto ...
 
     console.log("Easter egg ativado! 🦆");
     
-    // ATUALIZA USANDO O LINK DEFINIDO ACIMA:
     atualizarFotosDosComentarios(linkPato);
 }
 function desativarEasterEggE_Restaurar() {
@@ -283,7 +293,6 @@ btnRemoverUltimaSkill.addEventListener("click", function () {
     
     if (listaSkills.lastElementChild) {
 
-        // remove easter egg do pato quando remove a palavra-chave
         let textoUltimaSkill = listaSkills.lastElementChild.textContent.trim().toLowerCase();
         if (textoUltimaSkill === "pato") {
             desativarEasterEggE_Restaurar();
@@ -295,7 +304,6 @@ btnRemoverUltimaSkill.addEventListener("click", function () {
 
 });
 
-// Forço o JS "clicar" no botão se o usuario usar o enter para melhorar a experiencia
 inputSkill.addEventListener("keydown", function (event) {
 
     if (event.key === "Enter") {
@@ -305,10 +313,6 @@ inputSkill.addEventListener("keydown", function (event) {
 });
 
 // #endregion 8. SKILLS
-
-// #endregion
-
-// #region MODULO 3 (9-12)
 
 // #region 9. CONTADOR VISUALIZAÇÕES
 let contadorVisualizacoes = 0;
@@ -330,8 +334,7 @@ if (btnVisualizarPerfil && spanContadorVisualizacoes){
     
     btnVisualizarPerfil.addEventListener("mouseover", function() {
         btnVisualizarPerfil.style.backgroundColor = "#22c55e";
-        //adicionar translate e transition 
-        // btnVisualizarPerfil.style.transform = "scale(1.05)";
+
     });
     
     btnVisualizarPerfil.addEventListener("mouseout", function() {
@@ -573,9 +576,6 @@ btnSalvar.addEventListener("click", function(){
 
 // #endregion
 
-// #endregion
-
-// #region MODULO 4 (13-16)
 
 // #region 13. TASK LIST
 const inputTask = document.getElementById("input-task");
@@ -634,23 +634,17 @@ containerTaskList.addEventListener("click", function(event){
 // #region 14. cadastro
 
 // #region 14.1 logica toggle
-// 1. Selecionamos as abas (as divs dentro do toggle) e os blocos de conteúdo
 const abas = document.querySelectorAll('.toggle-cadastro > div');
 const conteudos = document.querySelectorAll('.tab-content');
 
 abas.forEach(aba => {
     aba.addEventListener('click', () => {
-        // 2. Remove a classe 'active' de todas as abas para "apagar" a anterior
         abas.forEach(a => a.classList.remove('active'));
         
-        // 3. Adiciona 'active' na aba que você acabou de clicar
         aba.classList.add('active');
 
-        // 4. Pega o ID do conteúdo que queremos mostrar
-        // Note: No seu HTML anterior usamos o atributo 'data-target'
         const alvoId = aba.getAttribute('data-target');
 
-        // 5. Esconde todos os conteúdos e mostra apenas o que coincide com o ID
         conteudos.forEach(conteudo => {
             conteudo.classList.remove('active');
             if (conteudo.id === alvoId) {
@@ -663,7 +657,7 @@ abas.forEach(aba => {
 
 
 // #region 14.2 validacao pj
-// 1. SELEÇÃO DE ELEMENTOS
+
 const formPJ = document.getElementById("form-cadastro-pj");
 const inputNome = document.getElementById("pj-nome");
 const inputData = document.getElementById("pj-data");
@@ -671,11 +665,14 @@ const inputEmail = document.getElementById("pj-email");
 const selectAtuacao = document.getElementById("pj-atuacao");
 const textareaDesc = document.getElementById("pj-descricao");
 
-// 2. FUNÇÕES DE VALIDAÇÃO (LÓGICA PURA)
+// funções de validação
 
 function validarNomePJ(valor) {
     const nome = valor.trim();
-    return nome.length >= 4 && nome.toUpperCase().includes("SA");
+    const palavras = nome.split(" ");
+    const temSA = palavras.includes("SA");
+    return nome.length >= 4 && temSA;
+
 }
 
 function validarDataPJ(valor) {
@@ -688,7 +685,6 @@ function validarDataPJ(valor) {
 function validarEmailPJ(valor) {
     const arroba = valor.indexOf("@");
     const ponto = valor.lastIndexOf(".");
-    // Regras: tem @ e ., @ não é o primeiro, ponto vem pelo menos 2 casas depois do @, e não é o último
     return arroba > 0 && ponto > arroba + 1 && ponto < valor.length - 1;
 }
 
@@ -701,37 +697,29 @@ function validarDescricaoPJ(valor) {
     return texto.length > 0 && texto.length <= 50;
 }
 
-// 3. FUNÇÃO DE FEEDBACK VISUAL
+// feedback visual
 function aplicarFeedback(input, spanId, eValido, forçarErro = false) {
     const span = document.getElementById(spanId);
     
     if (eValido) {
-        input.classList.add("campo-validado");
-        input.classList.remove("campo-invalido");
+        if (input) input.classList.remove("campo-invalido"); 
         span.classList.remove("destaque-erro");
-        span.classList.add("destaque-sucesso");
-    } else {
-        input.classList.remove("campo-validado");
-        span.classList.remove("destaque-sucesso");
-        
-        // Só aplicamos o vermelho se o erro for forçado (no submit)
-        if (forçarErro) {
-            input.classList.add("campo-invalido");
+    } else if (forçarErro) {
+        if (input) input.classList.add("campo-invalido");    
             span.classList.add("destaque-erro");
-        }
     }
 }
 
-// 4. EVENTOS DE INPUT (Feedback de Sucesso em tempo real)
+// eventos de input
 inputNome.addEventListener("input", () => aplicarFeedback(inputNome, "erro-pj-nome", validarNomePJ(inputNome.value)));
 inputData.addEventListener("input", () => aplicarFeedback(inputData, "erro-pj-data", validarDataPJ(inputData.value)));
 inputEmail.addEventListener("input", () => aplicarFeedback(inputEmail, "erro-pj-email", validarEmailPJ(inputEmail.value)));
 selectAtuacao.addEventListener("change", () => aplicarFeedback(selectAtuacao, "erro-pj-atuacao", validarAtuacaoPJ(selectAtuacao.value)));
 textareaDesc.addEventListener("input", () => aplicarFeedback(textareaDesc, "erro-pj-descricao", validarDescricaoPJ(textareaDesc.value)));
 
-// 5. EVENTO DE SUBMIT (Validação Final de Erro)
+// evento de submit
 formPJ.addEventListener("submit", (event) => {
-    event.preventDefault(); // Impede o envio para validar
+    event.preventDefault();
 
     const nomeOk = validarNomePJ(inputNome.value);
     const dataOk = validarDataPJ(inputData.value);
@@ -739,7 +727,6 @@ formPJ.addEventListener("submit", (event) => {
     const atuacaoOk = validarAtuacaoPJ(selectAtuacao.value);
     const descOk = validarDescricaoPJ(textareaDesc.value);
 
-    // Força a exibição visual do erro em todos os campos que falharem
     aplicarFeedback(inputNome, "erro-pj-nome", nomeOk, true);
     aplicarFeedback(inputData, "erro-pj-data", dataOk, true);
     aplicarFeedback(inputEmail, "erro-pj-email", emailOk, true);
@@ -747,136 +734,160 @@ formPJ.addEventListener("submit", (event) => {
     aplicarFeedback(textareaDesc, "erro-pj-descricao", descOk, true);
 
     if (nomeOk && dataOk && emailOk && atuacaoOk && descOk) {
-        alert("Empresa cadastrada com sucesso! 🏢🚀");
+        alert(`Empresa "${inputNome.value}" cadastrada`);
         formPJ.reset();
         
-        // Limpa as classes de sucesso após o reset
-        [inputNome, inputData, inputEmail, selectAtuacao, textareaDesc].forEach(el => {
-            el.classList.remove("campo-validado");
-        });
         document.querySelectorAll(".regras-negocio-labels-cadastro").forEach(span => {
             span.classList.remove("destaque-sucesso");
         });
     } else {
-        console.warn("Formulário contém erros. Corrija-os para prosseguir.");
+        console.log("Formulário contém erros. Corrija-os para prosseguir.");
     }
 });
 // #endregion
-
-
 
 // #region 14.3 validacao pf
+
 const formPF = document.getElementById("form-cadastro-pf");
+const inputLogin = document.getElementById("pf-login");
+const inputIdade = document.getElementById("pf-idade");
+const selectGenero = document.getElementById("pf-genero");
+const inputSenha = document.getElementById("pf-senha");
+const inputConfirma = document.getElementById("pf-senha-confirma");
+const checkboxesMusica = document.querySelectorAll('input[name="musica"]');
 
-// Funções de Validação PF
-function validarLoginPF(valor) {
-    return valor.length > 0 && valor.length <= 8;
-}
+// funções de validação
+const validarLoginPF = (v) => v.trim().length > 0 && v.trim().length <= 8;
+const validarIdadePF = (v) => v !== "" && Number(v) > 12;
+const validarGeneroPF = (v) => v !== "";
+const validarMusicaPF = () => Array.from(checkboxesMusica).filter(c => c.checked).length >= 2;
+const validarSenhaPF = (v) => v.length >= 4 && v.length <= 10;
+const validarConfirmaPF = (v1, v2) => v1 === v2 && v1 !== "";
 
-function validarIdadePF(valor) {
-    const idade = parseInt(valor);
-    return !isNaN(idade) && idade > 12;
-}
+inputLogin.addEventListener("input", () => {
+    if(validarLoginPF(inputLogin.value)) aplicarFeedback(inputLogin, "erro-pf-login", true);
+});
 
-function validarMusicaPF() {
-    // Seleciona todos os checkboxes com name="musica" que estão checados
-    const selecionados = document.querySelectorAll('input[name="musica"]:checked');
-    return selecionados.length >= 2;
-}
+checkboxesMusica.forEach(check => {
+    check.addEventListener("change", () => {
+        const spanMusica = document.getElementById("erro-pf-musica");
+        if(validarMusicaPF()) spanMusica.classList.remove("destaque-erro");
+    });
+});
 
-function validarSenhaPF(senha, confirma) {
-    const tamanhoOk = senha.length >= 4 && senha.length <= 10;
-    const iguais = senha === confirma && senha !== "";
-    return { tamanhoOk, iguais };
-}
 
-// Evento Submit PF
-formPF.addEventListener("submit", (event) => {
-    event.preventDefault();
+selectGenero.addEventListener("change", () => {
+    if(validarGeneroPF(selectGenero.value)) aplicarFeedback(selectGenero, "erro-pf-genero", true);
+});
 
-    // Elementos
-    const inputLogin = document.getElementById("pf-login");
-    const inputIdade = document.getElementById("pf-idade");
-    const selectGenero = document.getElementById("pf-genero");
-    const inputSenha = document.getElementById("pf-senha");
-    const inputConfirma = document.getElementById("pf-senha-confirma");
-    const spanMusica = document.getElementById("erro-pf-musica");
+inputSenha.addEventListener("input", () => {
+    if(validarSenhaPF(inputSenha.value)) aplicarFeedback(inputSenha, "erro-pf-senha", true);
+});
 
-    // Validações
-    const loginOk = validarLoginPF(inputLogin.value.trim());
+inputConfirma.addEventListener("input", () => {
+    if(validarConfirmaPF(inputSenha.value, inputConfirma.value)) {
+        aplicarFeedback(inputConfirma, "erro-pf-senha-confirma", true);
+    }
+});
+inputIdade.addEventListener("input", () => {
+    if(validarIdadePF(inputIdade.value)) aplicarFeedback(inputIdade, "erro-pf-idade", true);
+});
+
+// evento submit PF
+formPF.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const loginOk = validarLoginPF(inputLogin.value);
     const idadeOk = validarIdadePF(inputIdade.value);
-    const generoOk = selectGenero.value !== "";
+    const generoOk = validarGeneroPF(selectGenero.value);
     const musicaOk = validarMusicaPF();
-    const senhasResult = validarSenhaPF(inputSenha.value, inputConfirma.value);
+    const senhaOk = validarSenhaPF(inputSenha.value);
+    const confirmaOk = validarConfirmaPF(inputSenha.value, inputConfirma.value);
+    
+    aplicarFeedback(inputLogin, "erro-pf-login", loginOk, true);
+    aplicarFeedback(inputIdade, "erro-pf-idade", idadeOk, true);
+    aplicarFeedback(selectGenero, "erro-pf-genero", generoOk, true);
+    aplicarFeedback(inputSenha, "erro-pf-senha", senhaOk, true);
+    aplicarFeedback(inputConfirma, "erro-pf-senha-confirma", confirmaOk, true);
+    
+    aplicarFeedback(null, "erro-pf-musica", musicaOk, true);
 
-    // Função interna para aplicar visual (reaproveitando sua lógica)
-    const feedback = (el, spanId, valido) => {
-        const span = document.getElementById(spanId);
-        if (valido) {
-            el.classList.add("campo-validado");
-            el.classList.remove("campo-invalido");
-            span.classList.remove("destaque-erro");
-        } else {
-            el.classList.add("campo-invalido");
-            el.classList.remove("campo-validado");
-            span.classList.add("destaque-erro");
-        }
-    };
-
-    // Aplicar visual nos campos simples
-    feedback(inputLogin, "erro-pf-login", loginOk);
-    feedback(inputIdade, "erro-pf-idade", idadeOk);
-    feedback(selectGenero, "erro-pf-genero", generoOk);
-    feedback(inputSenha, "erro-pf-senha", senhasResult.tamanhoOk);
-    feedback(inputConfirma, "erro-pf-senha-confirma", senhasResult.iguais);
-
-    // Visual para Checkboxes (como não é um input único, focamos no span)
-    if (musicaOk) spanMusica.classList.remove("destaque-erro");
-    else spanMusica.classList.add("destaque-erro");
-
-    if (loginOk && idadeOk && generoOk && musicaOk && senhasResult.tamanhoOk && senhasResult.iguais) {
-        alert("Desenvolvedor cadastrado com sucesso! 🚀");
+    if (loginOk && idadeOk && generoOk && musicaOk && senhaOk && confirmaOk) {
+        alert("Desenvolvedor cadastrado com sucesso!");
         formPF.reset();
-        // Limpar classes de sucesso
-        document.querySelectorAll('#form-cadastro-pf .campo-validado').forEach(el => el.classList.remove('campo-validado'));
+
+        const campos = [inputLogin, inputIdade, selectGenero, inputSenha, inputConfirma];
+        campos.forEach(input => input.classList.remove("campo-invalido"));
+        
+        const spans = document.querySelectorAll("#conteudo-pf .regras-negocio-labels-cadastro");
+        spans.forEach(span => span.classList.remove("destaque-erro"));
     }
 });
 // #endregion
 // #endregion
 
-// #region Extras
 
+// #region api
+const formWA = document.getElementById("form-whatsapp");
+const inputWATelefone = document.getElementById("wa-telefone");
+const inputWAMensagem = document.getElementById("wa-mensagem");
 
-//  #region Botão reduzir nav
+// 1. Funções de Validação
+const validarTelefone = (v) => {
+    // Remove tudo que não é número e checa se tem entre 10 e 11 dígitos
+    const numeros = v.replace(/\D/g, "");
+    return numeros.length >= 10 && numeros.length <= 11;
+};
+
+const validarMensagem = (v) => v.trim().length > 0;
+
+// 2. Eventos de Feedback (Seguindo o padrão "Clean")
+inputWATelefone.addEventListener("input", () => {
+    if(validarTelefone(inputWATelefone.value)) aplicarFeedback(inputWATelefone, "erro-wa-telefone", true);
+});
+
+inputWAMensagem.addEventListener("input", () => {
+    if(validarMensagem(inputWAMensagem.value)) aplicarFeedback(inputWAMensagem, "erro-wa-mensagem", true);
+});
+
+// 3. Evento de Envio
+formWA.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const telOk = validarTelefone(inputWATelefone.value);
+    const msgOk = validarMensagem(inputWAMensagem.value);
+
+    aplicarFeedback(inputWATelefone, "erro-wa-telefone", telOk, true);
+    aplicarFeedback(inputWAMensagem, "erro-wa-mensagem", msgOk, true);
+
+    if (telOk && msgOk) {
+        // LIMPEZA: Remove parênteses, espaços e traços
+        const numeroLimpo = inputWATelefone.value.replace(/\D/g, "");
+        
+        // CODIFICAÇÃO: Transforma o texto para o formato de URL (ex: espaços viram %20)
+        const mensagemCodificada = encodeURIComponent(inputWAMensagem.value);
+
+        // MONTAGEM: O link do WhatsApp (Adicionamos o 55 do Brasil por padrão)
+        const urlFinal = `https://wa.me/55${numeroLimpo}?text=${mensagemCodificada}`;
+
+        // AÇÃO: Abre em nova aba
+        window.open(urlFinal, "_blank");
+        
+        formWA.reset();
+        // Limpa bordas de erro se houver
+        [inputWATelefone, inputWAMensagem].forEach(el => el.classList.remove("campo-invalido"));
+    }
+});
+// #endregion
+// #region outros
+
+//  botão reduzir nav
 const btnReduzir = document.getElementById("btn-reduzir-nav");
 const appContainer = document.querySelector(".app-container");
 
 btnReduzir.addEventListener("click", function () {
     appContainer.classList.toggle("reduzido");
 });
-//#endregion
-
-
-
-
-function atualizarSaudacao() {
-    const saudacaoElemento = document.getElementById('mensagem-boas-vindas');
-    const horaAtual = new Date().getHours();
-    let saudacao = "";
-
-    if (horaAtual >= 5 && horaAtual < 12) {
-        saudacao = "Bom dia,";
-    } else if (horaAtual >= 12 && horaAtual < 18) {
-        saudacao = "Boa tarde,";
-    } else {
-        saudacao = "Boa noite,";
-    }
-
-    saudacaoElemento.textContent = saudacao;
-}
-
-// Chama a função assim que a página carrega
-atualizarSaudacao();
 
 
 // #endregion
